@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style_choose.css">
+</head>
+<body>
+    <div class="main">
+        <div class="moto">
+            <a href="moto_page.html" target="alll">
+                <img id="moto" src="image/moto.png" onmouseover="">
+            </a>
+        </div>
+        <div class="cafe">
+            <a href="cafe.html" target="alll">
+                <img id="caf" src="image/cafe.png">
+            </a>
+        </div>
+    </div>
+    <script>
+        document.getElementById('moto').onload = function(){
+            let start = Date.now();
+            let timer=setInterval(function(){
+                let timePassed=Date.now() - start;
+                moto.style.height = timePassed/5 + 'px';
+                moto.style.width = timePassed/5 + 'px';
+                if(timePassed>2000) clearInterval(timer);
+            }, 20);
+        }
+        document.getElementById('caf').onload = function(){
+            let start = Date.now();
+            let timer=setInterval(function(){
+                let timePassed=Date.now() - start;
+                caf.style.height = timePassed/5 + 'px';
+                caf.style.width = timePassed/5 + 'px';
+                if(timePassed>2000) clearInterval(timer);
+            }, 20);
+        }
+    </script>
+</body>

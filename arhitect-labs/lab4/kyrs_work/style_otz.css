@@ -1,0 +1,40 @@
+body{
+    margin:0px;
+    width: 100%;
+}
+.filter{
+    position: relative;
+    display: block;
+    width: 20%;
+    margin: 20px;
+    font-size: 40px;
+    left: 30%;
+    box-sizing: border-box;
+    border-width: 0 1px;
+    border: 2px solid bisque;
+    border-radius: 10px;
+}
+input[type=checkbox]{
+    transform: scale(1.5);
+}
+.card{
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    width: 98%;
+    margin: 20px;
+    padding: 20px;
+    padding-top: 10px;
+    font-size: 20px;
+    background-color: whitesmoke;
+    border-radius: 16px;
+    border-width: 0 1px;
+    border: 2px solid black;
+}
+p{
+    margin:0px;
+}
+.card .pod{
+    color: silver;
+    margin-bottom: 10px;
+}

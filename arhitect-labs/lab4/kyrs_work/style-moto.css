@@ -1,0 +1,114 @@
+.m-head{
+    display: inline;
+    margin: 0px;
+    background-color: black;
+}
+.logo{
+    display: inline;
+}
+.logo img{
+    display: inline;
+    position: relative;
+    height: 110px;
+    width: 110px;
+    margin: 3px;
+    left: 2%;
+    float: left;
+}
+.m-head input{
+    box-sizing: border-box;
+    display: inline;
+    position: relative;
+    margin: 0px;
+    margin-right: 80px;
+    top: 10px;
+    left: 12%;
+    width: 300px;
+    height: 100px;
+    font-size: 48px;
+    background-color: rebeccapurple;
+    border-radius: 90px;
+    border-width: 0 1px;
+    border: 2 solid aliceblue;
+}
+.dop_main input{
+    box-sizing: border-box;
+    display: inline;
+    position: relative;
+    margin: 0px;
+    margin-right: 80px;
+    top: 10px;
+    left: 12%;
+    width: 300px;
+    height: 100px;
+    font-size: 48px;
+    background-color: rebeccapurple;
+    border-radius: 90px;
+    border-width: 0 1px;
+    border: 2 solid aliceblue;
+}
+.dop_main{
+    background-color: silver;
+}
+.dop_main input{
+    left: 30%;
+    width: 400px;
+    height: 200px;
+    font-size: 60px;
+    margin: 100px;
+    display: block;
+}
+.ch{
+    font-size: 40px;
+}
+.itog{
+    font-size: 40px;
+}
+.thanks{
+    font-size: 99px;
+    color: black;
+}
+.big_img{
+    height: 200px;
+    width: 200px;
+    left:10%;
+    margin: 40px;
+}
+input[type=checkbox]{
+    transform: scale(1.5);
+}
+.tov-body img{
+    height: 100px;
+    width: 100px;
+    left: 14%;
+    margin: 0px;
+    margin-right: 100px;
+}
+.tov-body .imm{
+    position: relative;
+    display: inline;
+    left:35%
+}
+.tov{
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    border-width: 0 1px;
+    border: 2px solid purple;
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    margin-right: 31px;
+    padding: 5px;
+    font-size: 24px;
+    text-align: center;
+    float: left;
+}
+.tov img{
+    position: relative;
+    display: block;
+    left: 28%;
+}
+.tov .ce{
+    color: purple;
+}

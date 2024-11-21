@@ -1,0 +1,47 @@
+body{
+    display: inline;
+    margin: 0px;
+    background-color:  rgb(250, 198, 78);
+}
+.logo{
+    display: inline;
+}
+.logo img{
+    display: inline;
+    position: relative;
+    height: 110px;
+    width: 110px;
+    margin: 3px;
+    left: 46%;
+    float: left;
+}
+body input{
+    box-sizing: border-box;
+    display: inline;
+    position: relative;
+    margin: 0px;
+    top: 10px;
+    width: 300px;
+    height: 100px;
+    font-size: 48px;
+    background-color: aqua;
+    border-radius: 90px;
+    border-width: 0 1px;
+    border: 2 solid aliceblue;
+}
+.otz{
+    margin: 0px;
+    display: inline;
+    position: relative;
+    left: 8%;
+    width: 300px;
+    height: 100px;
+}
+.hist{
+    margin: 0px;
+    display: inline;
+    position: relative;
+    left: 34%;
+    width: 300px;
+    height: 100px;
+}
