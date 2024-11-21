@@ -1,0 +1,12 @@
+*~
+*.o
+*.a
+*.d
+*.so
+*.exe
+*.dll
+*.swp
+*.txt
+*.html
+
+Todo

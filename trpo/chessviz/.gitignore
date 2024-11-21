@@ -1,0 +1,14 @@
+*.o
+*.exe
+*.dll
+*.swp
+*~
+*.d
+*.so
+*.html
+*.txt
+
+text.txt
+output.txt
+output
+

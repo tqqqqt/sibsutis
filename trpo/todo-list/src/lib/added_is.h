@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct data;
+
+void added_is(
+        struct data** head,
+        struct data** tail,
+        int* max_day,
+        int* max_mounth,
+        int* max_year,
+        int* max_priority,
+        char name[30],
+        int day,
+        int mounth,
+        int year,
+        int priority);

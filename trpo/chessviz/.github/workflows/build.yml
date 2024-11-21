@@ -1,0 +1,27 @@
+on: push
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check codestyle
+        run: git ls-files src/*.{c,h} | xargs clang-format -i --verbose && git diff --exit-code
+
+      - name: Build application
+        run: make
+
+  test:
+    needs: build
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check codestyle sec
+        run: git ls-files test/*.c | xargs clang-format -i --verbose && git diff --exit-code
+
+      - name: Test application
+        run: make test
