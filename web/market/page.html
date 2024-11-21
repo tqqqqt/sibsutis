@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<head>
+    <title>Магазин книг</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="hhead">
+        <p class="logo">BOOKS</p>
+        <input class="hbut" type="button" value="Католог" onclick="">
+        <input class="hbut" type="button" value="Акции" onclick="">
+        <input class="hbut" type="button" value="Магазины" onclick="">
+        <img class="himg" src="img/car.jpg" alt="">
+        <p class="tt" id="kol">0</p>
+        <p class="tt"><span id="sum">0</span> руб</p>
+    </div>
+    <div class="main">
+        <div class="fil">
+                <input type="checkbox" id="c1" onclick="hid()">Фантастика<br>
+                <input type="checkbox" id="c2" onclick="hid()">Класика<br>
+                <input type="checkbox" id="c3" onclick="hid()">Ужасы<br>
+                <input type="checkbox" id="c4" onclick="hid()">Боевик<br>
+                <input type="checkbox" id="c5" onclick="hid()">Детектив<br>
+                <input type="checkbox" id="c6" onclick="hid()">Исторический роман<br>
+                <input type="checkbox" id="c7" onclick="hid()">Любовный роман<br>
+                <input type="checkbox" id="c8" onclick="hid()">Приключения<br>
+                <input type="checkbox" id="c9" onclick="hid()">Сказки<br></label>
+        </div>
+        <div class="content_cards">
+            <div class="card" id="card1">
+                <img class="mimg" src="img/2944827_detail.jpg" alt="">
+                <p>Человек-бензопила. Книга 6.</p>
+                <p class="aut">Фудзимото Т.</p>
+                <p class="cen">589 Руб</p>
+                <input type="button" value="Купить" class="mbut" onclick="sum(this,589), chen(this)">
+            </div>
+            <div class="card" id="card2">
+                <img class="mimg" src="img/2940387_preview.jpg" alt="">
+                <p>О чем молчит Ласточка</p>
+                <p class="aut">Елена Малисова, Катерина</p>
+                <p class="cen">749 Руб</p>
+                <input type="button" value="Купить" class="mbut" onclick="sum(this,749), chen(this)">
+            </div>
+            <div class="card" id="card3">
+                <img class="mimg" src="img/2945152_preview.jpg" alt="">
+                <p>Колесо Времени. Книга 9.</p>
+                <p class="aut">Джордан Р.</p>
+                <p class="cen">966 Руб</p>
+                <input type="button" value="Купить" class="mbut" onclick="sum(this,966), chen(this)">
+            </div>
+            <div class="card" id="card4">
+                <img class="mimg" src="img/2922742_preview.jpg" alt="">
+                <p>На все ответ - один адепт.</p>
+                <p class="aut">Мазуркевич Н.В.</p>
+                <p class="cen">545 Руб</p>
+                <input type="button" value="Купить" class="mbut" onclick="sum(this,545), chen(this)">
+            </div>
+            <div class="card" id="card5">
+                <img class="mimg" src="img/2930341_preview.jpg" alt="">
+                <p>В отсутствие начальства</p>
+                <p class="aut">Свечин Н.</p>
+                <p class="cen">745 Руб</p>
+                <input type="button" value="Купить" class="mbut" onclick="sum(this,745), chen(this)">
+            </div>
+            <div class="card" id="card6">
+                <img class="mimg" src="img/95989_preview.jpg" alt="">
+                <p>Азазель</p>
+                <p class="aut">Акунин Б.</p>
+                <p class="cen">514 Руб</p>
+                <input type="button" value="Купить" class="mbut" onclick="sum(this,514), chen(this)">
+            </div>
+            <div class="card" id="card7">
+                <img class="mimg" src="img/2939708_preview.jpg" alt="">
+                <p>Шестерка Атласа</p>
+                <p class="aut">Блейк О.</p>
+                <p class="cen">818 Руб</p>
+                <input type="button" value="Купить" class="mbut" onclick="sum(this,818), chen(this)">
+            </div>
+        </div>
+    </div>
+    <div class="bot">
+        <a href="https://play.google.com/store/apps/details?id=ru.chitaigorod.mobile">
+            <img class="bimg" src="img/gp.jpg" alt="">
+        </a>
+        <p>2011—2022, ООО «Новый Книжный Центр». Перепечатка материалов сайта возможна только с указанием активной ссылки на сайт «Читай–город».</p>
+        <a href="https://apps.apple.com/ru/app/%D1%87%D0%B8%D1%82%D0%B0%D0%B9-%D0%B3%D0%BE%D1%80%D0%BE%D0%B4/id1483452031">
+            <img class="bimg" src="img/ap.jpg" alt="">
+        </a>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>

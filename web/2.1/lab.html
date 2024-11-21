@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <script language="JavaScript">
+        function set_image(){
+            var temp = document.img_romb.src;
+            document.img_romb.src=document.img_star.src;
+            document.img_star.src=temp;
+        }
+    </script>
+<head>
+    <title>Лабораторная 2.1</title>
+</head>
+<body>
+    <img height=320px name="img_star" src="star.webp">
+    <img height=320px name="img_romb" src="romb.png">
+    <form name="but">
+        <input type="button" value="Вызвать обмен" onclick="set_image()">
+    </form>
+</body>
+</html>

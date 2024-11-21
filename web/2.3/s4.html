@@ -1,0 +1,19 @@
+<html>
+    <script>
+        function vivod(obj){
+            var sum=eval(obj.cont1.value);
+            obj.cont2.value=sum*sum;
+        }
+    </script>
+    <head></head>
+    <body bgcolor="lime">
+        <h2>Вычисление площади</h2>
+        <p>Выделите поле 'сторона'</p>
+        <form action="url" method="post">
+            <P>Сторона
+            <input name="cont1" type=text value="" onselect="vivod(this.form)">
+            <P>Площадь
+            <input name="cont2" type=textbox value="">
+        </form>
+    </body>
+</html>

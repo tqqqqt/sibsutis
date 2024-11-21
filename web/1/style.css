@@ -1,0 +1,30 @@
+.ahead { color: blue;
+    margin-top: -38pt;
+    margin-left: 10pt;
+    font-size: 30pt;
+    font-weight: bold;
+    font-family: arial }
+.back { color: black;
+    margin-left: 10pt;
+    font-size: 30pt;
+    font-weight: bold;
+    font-family: arial }
+.bblock {
+    background-color: silver;
+    padding: 10px;
+}
+.block { margin-left:5em;
+    margin-top:2em;
+    margin-right:2em;
+    margin-bottom:2em;
+    padding: 13px;
+    background-color:white;
+    border-right: 10px double blue }
+.text { text-indent: 40px;
+    line-height: 48px;
+    font-size: 20pt }
+OL {
+	margin-top: 0.1em;
+	margin-bottom: 0.1em;
+	padding-inline-start: 50px;
+}

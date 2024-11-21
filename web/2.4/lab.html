@@ -1,0 +1,130 @@
+<html>
+    <script language="JavaScript">
+        function time(){
+            var now = new Date();
+            var hour = now.getHours();
+            var minute = now.getMinutes();
+            now = null
+            var ampm = "";
+            if(hour>=12){
+                hour-=12;
+                ampm="pm";
+            } else ampm="am";
+            hour = (hour == 0) ? 12 : hour
+            if(hour==1) t1.src="dg1.gif"
+            else if(hour==2) t1.src="dg2.gif"
+            else if(hour==3) t1.src="dg3.gif"
+            else if(hour==4) t1.src="dg4.gif"
+            else if(hour==5) t1.src="dg5.gif"
+            else if(hour==6) t1.src="dg6.gif"
+            else if(hour==7) t1.src="dg7.gif"
+            else if(hour==8) t1.src="dg8.gif"
+            else if(hour==9) t1.src="dg9.gif"
+
+            if(ampm=="pm") t5.src="dgpm.gif"
+            else t5.src="dgam.gif"
+
+            if(minute%10==1) t3.src="dg1.gif"
+            else if(minute%10==2) t3.src="dg2.gif"
+            else if(minute%10==3) t3.src="dg3.gif"
+            else if(minute%10==4) t3.src="dg4.gif"
+            else if(minute%10==5) t3.src="dg5.gif"
+            else if(minute%10==6) t3.src="dg6.gif"
+            else if(minute%10==7) t3.src="dg7.gif"
+            else if(minute%10==8) t3.src="dg8.gif"
+            else if(minute%10==9) t3.src="dg9.gif"
+            else t3.src="dg0.gif"
+
+            if(minute>=10 && minute<20) t2.src="dg1.gif"
+            else if(minute>=20 && minute<30) t2.src="dg2.gif"
+            else if(minute>=30 && minute<40) t2.src="dg3.gif"
+            else if(minute>=40 && minute<50) t2.src="dg4.gif"
+            else t2.src="dg0.gif"
+        }
+        function dat(){
+            var now = new Date()
+            var date = now.getDate()
+            var month = now.getMonth()
+            var year = now.getFullYear()
+            month++
+            now = null
+            if(date<10) d1.src="dg0.gif"
+            else if(date>=10 && date<20) d1.src="dg1.gif"
+            else if(date>=20 && date<30) d1.src="dg2.gif"
+            else d1.src="dg3.gif"
+
+            if(date%10==1) d2.src="dg1.gif"
+            else if(date%10==2) d2.src="dg2.gif"
+            else if(date%10==3) d2.src="dg3.gif"
+            else if(date%10==4) d2.src="dg4.gif"
+            else if(date%10==5) d2.src="dg5.gif"
+            else if(date%10==6) d2.src="dg6.gif"
+            else if(date%10==7) d2.src="dg7.gif"
+            else if(date%10==8) d2.src="dg8.gif"
+            else if(date%10==9) d2.src="dg9.gif"
+            else d2.src="dg0.gif"
+
+            if(month==1) d4.src="dg1.gif"
+            else if(month==2) d4.src="dg2.gif"
+            else if(month==3) d4.src="dg3.gif"
+            else if(month==4) d4.src="dg4.gif"
+            else if(month==5) d4.src="dg5.gif"
+            else if(month==6) d4.src="dg6.gif"
+            else if(month==7) d4.src="dg7.gif"
+            else if(month==8) d4.src="dg8.gif"
+            else if(month==9) d4.src="dg9.gif"
+            else if(month==10) d3.src="dg1.gif"
+            else if(month==11){ d3.src="dg1.gif"; d4.src="dg1.gif" }
+            else if(month==12){ d3.src="dg1.gif"; d4.src="dg2.gif" }
+
+            if(year<1000) d5.src="dg0.gif"
+            else if(year>=1000 && year<2000) d5.src="dg1.gif"
+            else if(year>=2000 && year<3000) d5.src="dg2.gif"
+            else if(year>=3000 && year<4000) d5.src="dg3.gif"
+
+            if(year%100<10) d7.src="dg0.gif"
+            else if(year%100>=10 && year%100<20) d7.src="dg1.gif"
+            else if(year%100>=20 && year%100<30) d7.src="dg2.gif"
+            else if(year%100>=30 && year%100<40) d7.src="dg3.gif"
+
+            if(year%10==1) d8.src="dg1.gif"
+            else if(year%10==2) d8.src="dg2.gif"
+            else if(year%10==3) d8.src="dg3.gif"
+            else if(year%10==4) d8.src="dg4.gif"
+            else if(year%10==5) d8.src="dg5.gif"
+            else if(year%10==6) d8.src="dg6.gif"
+            else if(year%10==7) d8.src="dg7.gif"
+            else if(year%10==8) d8.src="dg8.gif"
+            else if(year%10==9) d8.src="dg9.gif"
+        }
+    </script>
+    <head>
+        <title>Лабораторная работа 2.4</title>
+    </head>
+    <body>
+        <p align="center">
+            <table border="0">
+                <tbody>
+                    <tr valign="top">
+                        <img name="t1" src="dg0.gif" onclick="time(), dat()">
+                        <img src="dgc.gif" onclick="time(), dat()">
+                        <img name="t2" src="dg0.gif" onclick="time(), dat()">
+                        <img name="t3" src="dg0.gif" onclick="time(), dat()">
+                        <img name="t5" src="dgam.gif" onclick="time(), dat()">
+                        <br>
+                        <img name="d1" src="dg0.gif" onclick="time(), dat()">
+                        <img name="d2" src="dg0.gif" onclick="time(), dat()">
+                        <img src="dgp.gif" onclick="time(), dat()">
+                        <img name="d3" src="dg0.gif" onclick="time(), dat()">
+                        <img name="d4" src="dg0.gif" onclick="time(), dat()">
+                        <img src="dgp.gif" onclick="time(), dat()">
+                        <img name="d5" src="dg0.gif" onclick="time(), dat()">
+                        <img src="dg0.gif" onclick="time(), dat()">
+                        <img name="d7" src="dg0.gif" onclick="time(), dat()">
+                        <img name="d8" src="dg0.gif" onclick="time(), dat()">
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+    </body>
+</html>

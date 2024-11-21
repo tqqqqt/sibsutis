@@ -1,0 +1,39 @@
+<html>
+    <script language="JavaScript">
+        var delay=2000;
+        function animate(){
+            if(img.src.indexOf('s1.gif')!=-1) img.src="s2.gif";
+            else if(img.src.indexOf('s2.gif')!=-1) img.src="s3.gif";
+            else if(img.src.indexOf('s3.gif')!=-1) img.src="s4.gif";
+            else if(img.src.indexOf('s4.gif')!=-1) img.src="s5.gif";
+            else if(img.src.indexOf('s5.gif')!=-1) img.src="s6.gif";
+            else if(img.src.indexOf('s6.gif')!=-1) img.src="s7.gif";
+            else if(img.src.indexOf('s7.gif')!=-1) img.src="s8.gif";
+            else if(img.src.indexOf('s8.gif')!=-1) img.src="s9.gif";
+            else if(img.src.indexOf('s9.gif')!=-1) img.src="s10.gif";
+            else if(img.src.indexOf('s10.gif')!=-1) img.src="s11.gif";
+            else if(img.src.indexOf('s11.gif')!=-1) img.src="s12.gif";
+            else if(img.src.indexOf('s12.gif')!=-1) img.src="s1.gif";
+        }
+        function sped_up(){
+            if(delay<=200 && delay>40) delay-=20;
+            else if(delay<40) delay-=5;
+            else delay-=200; 
+        }
+        function sped_down(){
+            if(delay<=200) delay+=20;
+            else delay+=200;
+        }
+    </script>
+    <head>
+        <title>Лабораторная 2.2</title>
+    </head>
+    <body>
+        <img name="img" src="s1.gif" onLoad="idd=setTimeout('animate()', delay)">
+        <input type="button" value="Быстрее" onclick="sped_up()">
+        <input type="button" value="Медленнее" onclick="sped_down()">
+        <input type="button" value="Скорость" onclick="alert(delay)">
+        <input type="button" value="Стоп" onclick="clearTimeout(idd);">
+        <input type="button" value="Старт" onclick="idd=setTimeout('animate()', delay)">
+    </body>
+</html>

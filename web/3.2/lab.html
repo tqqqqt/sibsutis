@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <META HTTP-EQUIV="Set-Cookie">
+        <title>Лабораторная 3.2</title>
+        <style>
+            .hh{
+                font-size:60px;
+            }
+        </style>
+    </head>
+    <body onload="setK(), tt()">
+        <div class="hh">Cookies</div>
+        <span id="pr"></span> <span id="find"></span>
+        <br>Количество посещений этой страницы: <span id="kk"></span>
+        <br>Вы были на этой странице: <span id="tim" onload="setK()"></span>
+        <i><br>Введите имя</i>  <input id="pol" name="nam" type=text value="">
+        <br><input name="reg" type=button value="Зарегестрироваться" onclick="setCo(pol,expires)">
+        <br><input name="del" type=button value="Обнулить посещения" onclick="delCo()">
+
+        <script language="javascript">
+            var res = new Date()
+            var kol=parseInt(getNu())+1
+            var today = new Date()
+            var time = new Date()
+            var t1 = new Date(getTi())
+            var t2 = new Date()
+            var tt1, tt2, tt3
+            time.setTime(today.getTime()+1000*60*60*24*365)
+            var expires = new Date()
+            expires.setTime(today.getTime() + 1000*60*60*24*365)
+            function setCo(obj,expire){
+                document.cookie="name"+"="+escape(obj.value)+
+                ((expire==null) ? "" : (";expires="+expire.toGMTString()))
+                kol=0
+                setK()
+            }
+            function tt(){
+                res = t2.getTime() - t1.getTime()
+                tt1 = Math.floor(res/1000)
+                if(tt1>60){
+                    while(tt1>60) tt1=tt1-60
+                }
+                tt2 = Math.floor(res/1000/60)
+                tt3 = Math.floor(res/1000/60/60)
+                document.getElementById('tim').innerHTML = tt3 + " часов " + tt2 + " минут " + tt1 + " секунд назад"
+            }
+            function setK(){
+                if(document.cookie!=""){
+                    document.cookie="kol="+kol+";"
+                    document.cookie="tim="+res+";" 
+                }
+                else{ document.cookie="name=;kol="
+                    document.cookie="kol="+0+";"
+                    document.cookie="tim="+res+";" 
+                }
+            }
+            function getCo(name){
+                var search = name + "="
+                if(document.cookie.length>0){
+                    offset = document.cookie.indexOf(search)
+                    if(offset != 1){
+                        offset += search.length
+                        end = document.cookie.indexOf(";",offset)
+                        if(end == -1)
+                            end = document.cookie.length
+                            return unescape(document.cookie.substring(offset,end))
+                    }
+                }
+            }
+            function getNu(){
+                var search = "kol" + "="
+                if(getCo(name)!=""){
+                    offset = document.cookie.indexOf(search)
+                    if(offset != 1){
+                        offset += search.length
+                        end = document.cookie.indexOf(";",offset)
+                        if(end == -1)
+                            end = document.cookie.length
+                            return unescape(document.cookie.substring(offset,end))
+                    }
+                }
+                else return -1
+            }
+            function getTi(){
+                var search = "tim" + "="
+                if(document.cookie.length>0){
+                    offset = document.cookie.indexOf(search)
+                    if(offset != 1){
+                        offset += search.length
+                        end = document.cookie.indexOf(";",offset)
+                        if(end == -1)
+                            end = document.cookie.length
+                            return unescape(document.cookie.substring(offset,end))
+                    }
+                }
+            }
+            function delCo(){
+                document.cookie="kol=-1"
+                document.cookie="name="
+            }
+                if(getCo(name)=="") document.getElementById('pr').innerHTML="Привет новый друг, зарегестрируйся пожалуйста"
+                else document.getElementById('pr').innerHTML="Привет"
+                document.getElementById('kk').innerHTML = kol
+                document.getElementById('find').innerHTML = getCo(name)
+        </script>
+    </body>
+</html>

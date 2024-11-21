@@ -1,0 +1,385 @@
+<html>
+    <head>
+        <title>Лабораторная 3.3</title>
+        <style>
+            select{
+                height: 30px;
+                width: 80px;
+            }
+            table {
+                border: 1px solid gray;
+            }
+            th{
+                width: 300px;
+                border: 1px solid gray;
+            }
+            td{
+                border: 1px solid gray;
+            }
+        </style>
+    </head>
+    <body>
+        Факультет: <select id="f" onchange="ff()">
+            <option></option>
+            <option value="1">Ивт</option>
+            <option value="2">Вит</option>
+        </select>
+        Курс: <select id="k" onchange="kk()">
+            <option></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        Группа: <select id="g" onchange="nn()">
+            <option id="non"></option>
+            <option id="one"></option>
+            <option id="two"></option>
+        </select>
+        Имя: <select id="n" onchange="loadd()" onselect="loadd()" >
+            <option id="nnon"></option>
+            <option id="nam"></option>
+            <option id="nnam"></option>
+        </select>
+
+        <table>
+            <tr>
+                <th>Предмет</th>
+                <th WIDTH="5%">Оценка</th>
+            </tr>
+            <tr>
+                <td>Метрология,Стандартизация и Сертификация</td>
+                <td><span id="oc1"></span></td>
+            </tr>
+            <tr>
+                <td>Объектно Ориентированное Программирование</td>
+                <td><span id="oc2"></span></td>
+            </tr>
+            <tr>
+                <td>Архитектура Вычислительных систем</td>
+                <td><span id="oc3"></span></td>
+            </tr>
+            <tr>
+                <td>Теория Массового Обслуживания</td>
+                <td><span id="oc4"></span></td>
+            </tr>
+            <tr>
+                <td>Экономика</td>
+                <td><span id="oc5"></span></td>
+            </tr>
+            <tr>
+                <td>Базы Данных</td>
+                <td><span id="oc6"></span></td>
+            </tr>
+            <tr>
+                <td>Физическая Культура</td>
+                <td><span id="oc7"></span></td>
+            </tr>
+        </table>
+
+        Средний балл за контрольный срок составляет: <span id="sum"></span>
+        <br><input type="button" value="Выполнить" onclick="document.getElementById('sum').innerHTML=su">
+        <br><input type="button" value="Отменить" onclick="document.getElementById('sum').innerHTML='0'">
+
+        <script language="JavaScript">
+            var su=0;
+            var value=0;
+            const el1=document.getElementById('one');
+            const el2=document.getElementById('two');
+            const el3=document.getElementById('nam');
+            const el4=document.getElementById('nnam');
+            var NAM
+            function ff(){
+                if(f.value=='1') value=1;
+                else if(f.value=='2') value=2;
+            }
+            function kk(){
+                if(k.value=='1' && f.value=='1'){
+                    el1.innerHTML="I1"
+                    el2.innerHTML="I2"
+                }
+                else if(k.value=='2' && f.value=='1'){
+                    el1.innerHTML="I3"
+                    el2.innerHTML="I4"
+                }
+                else if(k.value=='3' && f.value=='1'){
+                    el1.innerHTML="I5"
+                    el2.innerHTML="I6"
+                }
+                else if(k.value=='4' && f.value=='1'){
+                    el1.innerHTML="I7"
+                    el2.innerHTML="I8"
+                }
+                else if(k.value=='1' && f.value=='2'){
+                    el1.innerHTML="V1"
+                    el2.innerHTML="V2"
+                }
+                else if(k.value=='2' && f.value=='2'){
+                    el1.innerHTML="V3"
+                    el2.innerHTML="V4"
+                }
+                else if(k.value=='3' && f.value=='2'){
+                    el1.innerHTML="V5"
+                    el2.innerHTML="V6"
+                }
+                else if(k.value=='4' && f.value=='2'){
+                    el1.innerHTML="V7"
+                    el2.innerHTML="V8"
+                }
+            }
+            function nn(){
+                if(g.value=='I1'){
+                    el3.innerHTML="Ваня"
+                    el4.innerHTML="Петр"
+                }
+                else if(g.value=='I2'){
+                    el3.innerHTML="Кирил"
+                    el4.innerHTML="Саша"
+                }
+                else if(g.value=='I3'){
+                    el3.innerHTML="Петя"
+                    el4.innerHTML="Олег"
+                }
+                else if(g.value=='I4'){
+                    el3.innerHTML="Харид"
+                    el4.innerHTML="Абдула"
+                }
+                else if(g.value=='I5'){
+                    el3.innerHTML="Иван"
+                    el4.innerHTML="Максим"
+                }
+                else if(g.value=='I6'){
+                    el3.innerHTML="Андрей"
+                    el4.innerHTML="Егор"
+                }
+                else if(g.value=='I7'){
+                    el3.innerHTML="Артем"
+                    el4.innerHTML="Никита"
+                }
+                else if(g.value=='I8'){
+                    el3.innerHTML="Денис"
+                    el4.innerHTML="Женя"
+                }
+                else if(g.value=='V1'){
+                    el3.innerHTML="Хасан"
+                    el4.innerHTML="Сергей"
+                }
+                else if(g.value=='V2'){
+                    el3.innerHTML="Абдула"
+                    el4.innerHTML="Олег"
+                }
+                else if(g.value=='V3'){
+                    el3.innerHTML="Семен"
+                    el4.innerHTML="Никита"
+                }
+                else if(g.value=='V4'){
+                    el3.innerHTML="Митрофан"
+                    el4.innerHTML="Женя"
+                }
+                else if(g.value=='V5'){
+                    el3.innerHTML="Виктор"
+                    el4.innerHTML="Кто"
+                }
+                else if(g.value=='V6'){
+                    el3.innerHTML="Навин"
+                    el4.innerHTML="Викрам"
+                }
+                else if(g.value=='V7'){
+                    el3.innerHTML="Джейкоб"
+                    el4.innerHTML="Навин"
+                }
+                else if(g.value=='V8'){
+                    el3.innerHTML="Ярослав"
+                    el4.innerHTML="Митя"
+                }
+            }
+
+            function loadd(){
+                var parser, xmldoc;
+                var text = "<root>"+
+    "<ivan1>"+
+        "<metr>1</metr>"+
+        "<object>2</object>"+
+        "<architect>0</architect>"+
+        "<econ>2</econ>"+
+    "</ivan1>"+
+    "<petr1>"+
+        "<metr>2</metr>"+
+        "<object>0</object>"+
+        "<architect>2</architect>"+
+        "<econ>1</econ>"+
+    "</petr1>"+
+    "<kiril1>"+
+        "<metr>1</metr>"+
+        "<object>1</object>"+
+        "<architect>1</architect>"+
+        "<econ>0</econ>"+
+    "</kiril1>"+
+    "<saha1>"+
+        "<metr>1</metr>"+
+        "<object>0</object>"+
+        "<architect>2</architect>"+
+        "<econ>1</econ>"+
+    "</saha1>"+
+    "<pet1>"+
+        "<metr>0</metr>"+
+        "<object>2</object>"+
+        "<architect>2</architect>"+
+        "<econ>0</econ>"+
+    "</pet1>"+
+    "<oleg1>"+
+        "<metr>1</metr>"+
+        "<object>1</object>"+
+        "<architect>2</architect>"+
+        "<econ>2</econ>"+
+    "</oleg1>"+
+    "<harid1>"+
+        "<metr>2</metr>"+
+        "<object>0</object>"+
+        "<architect>1</architect>"+
+        "<econ>1</econ>"+
+    "</harid1>"+
+    "<abdyla1>"+
+        "<metr>2</metr>"+
+        "<object>0</object>"+
+        "<architect>0</architect>"+
+        "<econ>1</econ>"+
+    "</abdyla1>"+
+    "<ivan2>"+
+        "<metr>2</metr>"+
+        "<object>2</object>"+
+        "<architect>2</architect>"+
+        "<econ>2</econ>"+
+    "</ivan2>"+
+    "<maksim>"+
+        "<metr>0</metr>"+
+        "<object>0</object>"+
+        "<architect>0</architect>"+
+        "<econ>0</econ>"+
+    "</maksim>"+
+    "<andrey1>"+
+        "<metr>2</metr>"+
+        "<object>2</object>"+
+        "<architect>0</architect>"+
+        "<econ>0</econ>"+
+    "</andrey1>"+
+    "<egor1>"+
+        "<metr>0</metr>"+
+        "<object>1</object>"+
+        "<architect>0</architect>"+
+        "<econ>1</econ>"+
+    "</egor1>"+
+    "<artem1>"+
+        "<metr>2</metr>"+
+        "<object>2</object>"+
+        "<architect>0</architect>"+
+        "<econ>2</econ>"+
+    "</artem1>"+
+    "<nikit1>"+
+        "<metr>0</metr>"+
+        "<object>1</object>"+
+        "<architect>1</architect>"+
+        "<econ>2</econ>"+
+    "</nikit1>"+
+    "<denis1>"+
+        "<metr>0</metr>"+
+        "<object>1</object>"+
+        "<architect>1</architect>"+
+        "<econ>0</econ>"+
+    "</denis1>"+
+    "<jena1>"+
+        "<metr>1</metr>"+
+        "<object>1</object>"+
+        "<architect>1</architect>"+
+        "<econ>1</econ>"+
+    "</jena1>"+
+"</root>";
+                var nn=0;
+                parser=new DOMParser();
+                xmldoc=parser.parseFromString(text,"text/xml");
+
+                if(n.value=='Ваня' && g.value=='I1') nn=0
+                else if(n.value=='Петр' && g.value=='I1') nn=1
+                else if(n.value=='Кирил' && g.value=='I2') nn=2
+                else if(n.value=='Саша' && g.value=='I2') nn=3
+                else if(n.value=='Петя' && g.value=='I3') nn=4
+                else if(n.value=='Олег' && g.value=='I3') nn=5
+                else if(n.value=='Харид' && g.value=='I4') nn=6
+                else if(n.value=='Абдула' && g.value=='I4') nn=7
+                else if(n.value=='Иван' && g.value=='I5') nn=8
+                else if(n.value=='Максим' && g.value=='I5') nn=9
+                else if(n.value=='Андрей' && g.value=='I6') nn=10
+                else if(n.value=='Егор' && g.value=='I6') nn=11
+                else if(n.value=='Артем' && g.value=='I7') nn=12
+                else if(n.value=='Никита' && g.value=='I7') nn=13
+                else if(n.value=='Денис' && g.value=='I8') nn=14
+                else if(n.value=='Женя' && g.value=='I8') nn=15
+                else if(n.value=='Хасан' && g.value=='V1') nn=14
+                else if(n.value=='Сергей' && g.value=='V1') nn=12
+                else if(n.value=='Абдула' && g.value=='V2') nn=10
+                else if(n.value=='Олег' && g.value=='V2') nn=8
+                else if(n.value=='Семен' && g.value=='V3') nn=6
+                else if(n.value=='Никита' && g.value=='V3') nn=4
+                else if(n.value=='Митрофан' && g.value=='V4') nn=2
+                else if(n.value=='Женя' && g.value=='V4') nn=0
+                else if(n.value=='Виктор' && g.value=='V5') nn=1
+                else if(n.value=='Кто' && g.value=='V5') nn=3
+                else if(n.value=='Навин' && g.value=='V6') nn=5
+                else if(n.value=='Викрам' && g.value=='V6') nn=7
+                else if(n.value=='Джейкоб' && g.value=='V7') nn=9
+                else if(n.value=='Навин' && g.value=='V7') nn=11
+                else if(n.value=='Ярослав' && g.value=='V8') nn=13
+                else if(n.value=='Митя' && g.value=='V8') nn=15
+
+                if(n.value!=""){
+                document.getElementById("oc1").innerHTML=xmldoc.getElementsByTagName("metr")[nn].childNodes[0].nodeValue;
+                document.getElementById("oc2").innerHTML=xmldoc.getElementsByTagName("object")[nn].childNodes[0].nodeValue;
+                document.getElementById("oc3").innerHTML=xmldoc.getElementsByTagName("architect")[nn].childNodes[0].nodeValue;
+                document.getElementById("oc4").innerHTML=xmldoc.getElementsByTagName("econ")[nn].childNodes[0].nodeValue;
+                document.getElementById("oc5").innerHTML=xmldoc.getElementsByTagName("object")[nn].childNodes[0].nodeValue;
+                document.getElementById("oc6").innerHTML=xmldoc.getElementsByTagName("metr")[nn].childNodes[0].nodeValue;
+                document.getElementById("oc7").innerHTML=xmldoc.getElementsByTagName("architect")[nn].childNodes[0].nodeValue;
+                su=(parseInt(xmldoc.getElementsByTagName("metr")[nn].childNodes[0].nodeValue)+parseInt(xmldoc.getElementsByTagName("object")[nn].childNodes[0].nodeValue)+parseInt(xmldoc.getElementsByTagName("architect")[nn].childNodes[0].nodeValue)+parseInt(xmldoc.getElementsByTagName("econ")[nn].childNodes[0].nodeValue)+parseInt(xmldoc.getElementsByTagName("object")[nn].childNodes[0].nodeValue)+parseInt(xmldoc.getElementsByTagName("metr")[nn].childNodes[0].nodeValue)+parseInt(xmldoc.getElementsByTagName("architect")[nn].childNodes[0].nodeValue))/7;
+                }
+                else{
+                    document.getElementById("oc1").innerHTML=""
+                document.getElementById("oc2").innerHTML=""
+                document.getElementById("oc3").innerHTML=""
+                document.getElementById("oc4").innerHTML=""
+                document.getElementById("oc5").innerHTML=""
+                document.getElementById("oc6").innerHTML=""
+                document.getElementById("oc7").innerHTML=""
+                su=0;
+                }
+
+                //     var xmldoc=new ActiveXObject("Microsoft.XMLDOM")
+                //     xmldoc.async=false
+                //     xmldoc.load("bas.xml")
+                // if(el3.value=='Ваня' && el1.value=='I1') NAM=xmldoc.getElementsByTagName("ivan1")
+                // else if(el3.value=='Петр' && el1.value=='I1') NAM=xmldoc.getElementsByTagName("petr1")
+                // else if(el3.value=='Кирил' && el1.value=='I2') NAM=xmldoc.getElementsByTagName("kiril1")
+                // else if(el3.value=='Саша' && el1.value=='I2') NAM=xmldoc.getElementsByTagName("saha1")
+                // else if(el3.value=='Петя' && el1.value=='I3') NAM=xmldoc.getElementsByTagName("pet1")
+                // else if(el3.value=='Олег' && el1.value=='I3') NAM=xmldoc.getElementsByTagName("oleg1")
+                // else if(el3.value=='Харид' && el1.value=='I4') NAM=xmldoc.getElementsByTagName("harid1")
+                // else if(el3.value=='Абдула' && el1.value=='I4') NAM=xmldoc.getElementsByTagName("abdyla1")
+                // else if(el3.value=='Иван' && el1.value=='I5') NAM=xmldoc.getElementsByTagName("ivan2")
+                // else if(el3.value=='Максим' && el1.value=='I5') NAM=xmldoc.getElementsByTagName("maksim1")
+                // else if(el3.value=='Андрей' && el1.value=='I6') NAM=xmldoc.getElementsByTagName("andrey1")
+                // else if(el3.value=='Егор' && el1.value=='I6') NAM=xmldoc.getElementsByTagName("egor1")
+                // else if(el3.value=='Артем' && el1.value=='I7') NAM=xmldoc.getElementsByTagName("artem1")
+                // else if(el3.value=='Никита' && el1.value=='I7') NAM=xmldoc.getElementsByTagName("nikit1")
+                // else if(el3.value=='Денис' && el1.value=='I8') NAM=xmldoc.getElementsByTagName("denis1")
+                // else if(el3.value=='Женя' && el1.value=='I8') NAM=xmldoc.getElementsByTagName("jena1")
+
+                // for(var i=0;i<NAM.length;i++){
+                //     su+=NAM.item(i)
+                // }
+                // document.getElementById('oc1').innerHTML=NAM.item(0)
+                // document.getElementById('oc2').innerHTML=NAM.item(1)
+                // document.getElementById('oc3').innerHTML=NAM.item(2)
+                // document.getElementById('oc4').innerHTML=NAM.item(3)
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style-moto.css">
+</head>
+<body class="ysl">
+    <div class="ch">
+        <input type="checkbox" id="cc1" onclick="su(document.getElementById('cc1'),11000)">Замена масел и фильтров - 11000 руб<br>
+        <input type="checkbox" id="cc2" onclick="su(document.getElementById('cc2'),3000)">Замена свечей - 3000 руб<br>
+        <input type="checkbox" id="cc3" onclick="su(document.getElementById('cc3'),7000)">Замена колодок и прокачка тормозной системы - 7000 руб<br>
+        <input type="checkbox" id="cc4" onclick="su(document.getElementById('cc4'),2500)">Замена звезд и цепей - 2500 руб<br>
+        <input type="checkbox" id="cc5" onclick="su(document.getElementById('cc5'),10000)">Замена охлаждающей жидкости и промывка системы - 10000 руб<br>
+        <input type="checkbox" id="cc6" onclick="su(document.getElementById('cc6'),4000)">Регулировка клапанов - 4000 руб<br>
+        <input type="checkbox" id="cc7" onclick="su(document.getElementById('cc7'),2500)">Замена цепи ГРМ - 2500 руб<br>
+        <input type="checkbox" id="cc8" onclick="su(document.getElementById('cc8'),5500)">Чистка и настройка карбюраторов - 5500 руб<br>
+        <input type="checkbox" id="cc9" onclick="su(document.getElementById('cc9'),6000)">Замена сальников вилки и масла - 6000 руб<br>
+        <input type="checkbox" id="cc10" onclick="su(document.getElementById('cc10'),3000)">Регулировка подвески - 3000 руб<br>
+        <input type="checkbox" id="cc11" onclick="su(document.getElementById('cc11'),7500)">Шиномонтаж - 7500 руб<br>
+    </div>
+    <div class="itog">
+        <span id="sum">0</span> руб
+        <span id="kol">0</span> услуги
+        <a id="ss" href="" target="" style="text-decoration: none;">
+            <input type="button" value="Оплатить" onclick="check(document.getElementById('ss'),1)">
+        </a>
+    </div>
+    <script src="script.js"></script>
+</body>

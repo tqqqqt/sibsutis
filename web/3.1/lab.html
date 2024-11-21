@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Лабораторная 3.1</title>
+    </head>
+    <style>
+        p{
+            font-size: 20px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        div{
+            display: inline;
+            width: 100px;
+            margin-right: 2em;
+            background-color: beige;
+        }
+        .block { margin-left:1em;
+            margin-top:-1em;
+            margin-right:0em;
+            display: inline;
+            background-color:silver;
+        }
+    </style>
+    <script>
+        var t=3000;
+        function hide(element){
+           if(element.style.display.indexOf('none')!=-1) element.style.display="block"
+           else element.style.display="none"
+        }
+        function check(element){
+            if(element.style.color.indexOf('black')!=-1) element.style.color="blue"
+            else element.style.color="black"
+        }
+    </script>
+    <body>
+        <div onmouseover="hide(sl)", onmouseout="timer=setTimeout('hide(sl)',t)" style="position:relative; height:44px; font-size:50px; color:navy; z-index:0;">Меню 1</div>
+        <div onmouseover="hide(sl2)", onmouseout="timer2=setTimeout('hide(sl2)',t)" style="position:relative; height:50px; font-size:50px; color:navy; z-index:0;">Меню 2</div> 
+        <div onmouseover="hide(sl3)", onmouseout="timer3=setTimeout('hide(sl3)',t)" style="position:relative; height:50px; font-size:50px; color:navy; z-index:0;">Меню 3</div>
+        <span class="block" id="sl", onmouseover="clearTimeout(timer)", onmouseout="timer=setTimeout('hide(sl)',t)" style="position:absolute; display:none; right:1300px; z-index:1; width:130px">
+            <p onmouseover="check(this)", onmouseout="check(this)" style="font-size:20px; color:black;">Выбор 1</p>
+            <p onmouseover="check(this)", onmouseout="check(this)" style="font-size:20px; color:black;">Выбор 2</p>
+            <p onmouseover="check(this)", onmouseout="check(this)" style="font-size:20px; color:black;">Выбор 3</p>
+            <p onmouseover="check(this)", onmouseout="check(this)" style="font-size:20px; color:black;">Выбор 4</p>
+        </span>
+        <span class="block" id="sl2", onmouseover="clearTimeout(timer2)", onmouseout="timer2=setTimeout('hide(sl2)',t)" style="position:absolute; display:none; right:1040px; z-index:1; width:130px">
+            <p onmouseover="check(this)", onmouseout="check(this)" style="font-size:20px; color:black;">Выбор 1</p>
+            <p onmouseover="check(this)", onmouseout="check(this)" style="font-size:20px; color:black;">Выбор 2</p>
+            <p onmouseover="check(this)", onmouseout="check(this)" style="font-size:20px; color:black;">Выбор 3</p>
+            <p onmouseover="check(this)", onmouseout="check(this)" style="font-size:20px; color:black;">Выбор 4</p>
+        </span>
+        <span class="block" id="sl3", onmouseover="clearTimeout(timer3)", onmouseout="timer3=setTimeout('hide(sl3)',t)" style="position:absolute; display:none; right:780px; z-index:1; width:130px">
+            <p onmouseover="check(this)", onmouseout="check(this)" style="font-size:20px; color:black;">Выбор 1</p>
+            <p onmouseover="check(this)", onmouseout="check(this)" style="font-size:20px; color:black;">Выбор 2</p>
+            <p onmouseover="check(this)", onmouseout="check(this)" style="font-size:20px; color:black;">Выбор 3</p>
+            <p onmouseover="check(this)", onmouseout="check(this)" style="font-size:20px; color:black;">Выбор 4</p>
+        </span>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<?php
+setcookie("name", "John Watkin", time()+3600, "/","", 0);
+setcookie("age", "36", time()+3600, "/", "",  0);
+?>
+<html>
+    <head>
+        <META HTTP-EQUIV="Set-Cookie">
+        <title>Лабораторная 3.2</title>
+    </head>
+    <style>
+        .hh{
+            font-size:60px;
+        }
+    </style>
+    <script language="javascript">
+        document.cookie = 'name=Вася; expires=11/11/2022 00:00:00, path=/; domain=ruseller.com;secure';
+        var today = new Date()
+	    var expires = new Date()
+	    expires.setTime(today.getTime() + 1000*60*60*24*365)
+        function setCo(name,obj,expire){
+            document.cookie=name+"="+escape(obj.value)+
+            ((expire==null) ? "" : ("; expires="+expire.toGMTString()))
+        }
+        function getCo(name){
+            var search = name + "="
+            if(document.cookie.length>0){
+                offset = document.cookie.indexOf(search)
+                if(offset != 1){
+                    offset += search.length
+                    end = document.cookie.indexOf(";",offset)
+                    if(end == -1)
+                        end = document.cookie.length
+                        return unescape(document.cookie.substring(offset,end))
+                }
+            }
+        }
+    </script>
+    <body>
+        <div class="hh">Cookies</div>
+        <p>Привет</p>
+        <p>Количество посещений этой страницы:</p>
+        <p>Вы были на этой странице:</p>
+        <i>Введите имя</i>  <input id="pol" name="nam" type=text value="">
+        <br><input name="reg" type=button value="Зарегестрироваться" onclick="setCo(name,pol,expires)">
+        <br><input name="del" type=button value="Обнулить посещения">
+    </body>
+</html>
