@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>style.css</file>
+        <file>trashKorz.png</file>
+        <file>changefon.html</file>
+        <file>delete.html</file>
+        <file>deletefon.html</file>
+        <file>index.html</file>
+        <file>type.html</file>
+        <file>add.html</file>
+        <file>option.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,53 @@
+QListWidget{
+    font-size: 20px;
+}
+
+QPushButton{
+    font: bold;
+    font-size: 12px;
+    text-align: center;
+}
+
+QPushButton[ theme ="white"]{
+    background-color: white;
+    color: black;
+}
+
+QPushButton[ theme ="Black"]{
+    background-color: silver;
+    color: white;
+}
+
+QLabel{
+    border-style: dotted;
+    border-width: 2px;
+    border-radius: 12px;
+    border-color: black;
+}
+
+QLabel[style="white"]{
+    border-color: black;
+    background-color: rgba(0,0,0,0.5);
+    color: black;
+}
+
+QLabel[style="Black"]{
+    border-color: white;
+    background-color: black;
+    color: white;
+}
+
+QLabel#label_4{
+    border-width: 0px;
+}
+
+QLabel#label_5{
+    border-width: 1px;
+    border-style: solid;
+    border-color: silver;
+    text-align: center;
+}
+
+QCheckBox{
+    font-size: 20px;
+}
