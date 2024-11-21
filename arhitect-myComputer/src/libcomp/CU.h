@@ -16,20 +16,6 @@
 #include "mySimpleComputer.h"
 #include "myTerm.h"
 
-#define op_read 10
-#define op_write 11
-#define op_load 20
-#define op_store 21
-#define op_add 30
-#define op_sub 31
-#define op_devide 32
-#define op_mul 33
-#define op_jump 40
-#define op_jneg 41
-#define op_jz 42
-#define op_halt 43
-#define op_and 52
-
 int CU (void);
 
 int readVvod (int oper);

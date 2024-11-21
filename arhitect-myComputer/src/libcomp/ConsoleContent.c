@@ -4,20 +4,30 @@ size_t size_need_writ = 0;
 int masForChars[18][2];
 
 void
-Memory_block ()
+Memory_block (int mode, int check)
 {
-  bc_box (1, 1, 62, 12);
-  mt_gotoXY (1, 27);
-  write (1, "Memory", strlen ("Memory"));
+  if (mode == 0)
+    {
+      bc_box (1, 1, 62, 12);
+      mt_gotoXY (1, 27);
+      write (1, "Memory", strlen ("Memory"));
+    }
   int line = 2, value = 0, comand = 0, operand = 0, flag = 0;
   char buf[6];
   sc_regGet (8, &flag);
   for (int i = 0; i < 100; i++)
     {
-      if (i % 10 == 0)
+      if (check == 0)
         {
-          mt_gotoXY (line, 2);
-          line++;
+          if (i % 10 == 0)
+            {
+              mt_gotoXY (line, 2);
+              line++;
+            }
+        }
+      else if (check == 1)
+        {
+          mt_gotoXY (line, 3);
         }
       if (sc_memoryGet (i, &value) < 0
           || sc_commandDecode (value & 0x3FFF, &comand, &operand) < 0)
@@ -55,17 +65,25 @@ Memory_block ()
           else
             write (1, buf, size_need_writ);
         }
-      if ((i + 1) % 10 != 0)
-        write (1, " ", strlen (" "));
+      if (check == 0)
+        {
+          if ((i + 1) % 10 != 0)
+            write (1, " ", strlen (" "));
+        }
     }
+  if (check == 1)
+    Memory_block (1, 0);
 }
 
 void
-Acum_block ()
+Acum_block (int mode)
 {
-  bc_box (63, 1, 82, 3);
-  mt_gotoXY (0, 67);
-  write (1, "Accumulator", strlen ("Accumulator"));
+  if (mode == 0)
+    {
+      bc_box (63, 1, 82, 3);
+      mt_gotoXY (0, 67);
+      write (1, "Accumulator", strlen ("Accumulator"));
+    }
   int comand, operand;
   char buf[6];
   mt_gotoXY (2, 69);
@@ -80,25 +98,30 @@ Acum_block ()
 }
 
 void
-Ins_block ()
+Ins_block (int mode)
 {
-  bc_box (63, 4, 82, 6);
-  mt_gotoXY (4, 65);
-  write (1, "InstructCounter", strlen ("InstructCounter"));
+  if (mode == 0)
+    {
+      bc_box (63, 4, 82, 6);
+      mt_gotoXY (4, 65);
+      write (1, "InstructCounter", strlen ("InstructCounter"));
+    }
   char buf[6];
   mt_gotoXY (5, 70);
   size_need_writ
       = snprintf (buf, 6, "%c%02d", (ins_count & 0x80) ? '-' : '+', ins_count);
   write (1, buf, size_need_writ);
-  mt_gotoXY (23, 14);
 }
 
 void
-Operation_block ()
+Operation_block (int mode)
 {
-  bc_box (63, 7, 82, 9);
-  mt_gotoXY (7, 67);
-  write (1, "Operation", strlen ("Operation"));
+  if (mode == 0)
+    {
+      bc_box (63, 7, 82, 9);
+      mt_gotoXY (7, 67);
+      write (1, "Operation", strlen ("Operation"));
+    }
   int value = 0, comand = 0, operand = 0, flag = 0;
   char buf[10];
   sc_regGet (8, &flag);
@@ -108,7 +131,7 @@ Operation_block ()
       if (sc_memoryGet (ins_count, &value) < 0
           || sc_commandDecode (value, &comand, &operand) < 0)
         {
-          // return;
+          return;
         }
     }
   else
@@ -116,7 +139,7 @@ Operation_block ()
       if (sc_memoryGet (selected_mas, &value) < 0
           || sc_commandDecode (value, &comand, &operand) < 0)
         {
-          // return;
+          return;
         }
     }
   size_need_writ = snprintf (buf, 10, "%c%02X : %02X",
@@ -125,11 +148,14 @@ Operation_block ()
 }
 
 void
-Flag_block ()
+Flag_block (int mode)
 {
-  bc_box (63, 10, 82, 12);
-  mt_gotoXY (10, 68);
-  write (1, "FLags", strlen ("Flags"));
+  if (mode == 0)
+    {
+      bc_box (63, 10, 82, 12);
+      mt_gotoXY (10, 68);
+      write (1, "FLags", strlen ("Flags"));
+    }
   mt_gotoXY (11, 67);
   for (int i = 1; i < 6; i++)
     {
@@ -198,13 +224,15 @@ Flag_block ()
         }
       write (1, " ", strlen (" "));
     }
-  mt_gotoXY (23, 14);
 }
 
 void
-BigChar_block ()
+BigChar_block (int mode)
 {
-  bc_box (1, 13, 47, 22);
+  if (mode == 0)
+    {
+      bc_box (1, 13, 47, 22);
+    }
   int value, comand, operand, bg[2], needChar = 0, flag = 0;
   char buf[6];
   sc_regGet (8, &flag);
@@ -292,11 +320,14 @@ BigChar_block ()
 }
 
 void
-Button_block ()
+Button_block (int mode)
 {
-  bc_box (48, 13, 82, 22);
-  mt_gotoXY (13, 63);
-  write (1, "Keys", strlen ("Keys"));
+  if (mode == 0)
+    {
+      bc_box (48, 13, 82, 22);
+      mt_gotoXY (13, 63);
+      write (1, "Keys", strlen ("Keys"));
+    }
   mt_gotoXY (14, 49);
   write (1, "l-load", strlen ("l-load"));
   mt_gotoXY (15, 49);
@@ -350,6 +381,20 @@ ClearSpace (int y, int x, int llenght)
     write (1, "                        ", strlen ("                        "));
   mt_setbgcolor (no_col);
   mt_setfgcolor (white);
+  mt_gotoXY (y, x);
+}
+
+void
+UpdateGraphic (int mode, int check)
+{
+  BigChar_block (mode);
+  Memory_block (mode, check);
+  Acum_block (mode);
+  Ins_block (mode);
+  Operation_block (mode);
+  Flag_block (mode);
+  Button_block (mode);
+  ClearSpace (23, 14, 2);
 }
 
 void
@@ -376,12 +421,6 @@ SignalHandler (int signal)
                   alarm (0);
                 }
             }
-          BigChar_block ();
-          Memory_block ();
-          Acum_block ();
-          Ins_block ();
-          Operation_block (ins_count);
-          Flag_block ();
         }
     }
   else if (signal == SIGUSR1)
@@ -391,7 +430,6 @@ SignalHandler (int signal)
       sc_memoryInit ();
       sc_regInit ();
       sc_regSet (8, 1);
-      Flag_block ();
     }
   else if (signal == SIGUSR2)
     {
@@ -411,7 +449,7 @@ SignalHandler (int signal)
                   sc_regSet (8, 1);
                 }
             }
+          selected_mas = ins_count;
         }
-      Ins_block ();
     }
 }

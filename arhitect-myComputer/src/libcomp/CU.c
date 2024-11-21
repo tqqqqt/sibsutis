@@ -10,7 +10,6 @@ CU ()
     {
       sc_regSet (16, 1);
       sc_regSet (8, 1);
-      sc_regSet (1, 1);
       alarm (0);
       return -1;
     }
@@ -98,18 +97,17 @@ CU ()
     {
       return -1;
     }
-  else if (com == 0x52)
+  else if (com == 0x55)
     {
-      ALU (com, oper);
-    }
-  else
-    {
-      sc_regSet (1, 1);
-      sc_regSet (2, 1);
-      sc_regSet (4, 1);
-      sc_regSet (8, 1);
-      sc_regSet (16, 1);
-      return -1;
+      if (!(ac & 0x4000))
+        {
+          if (oper < 0 || oper > 99)
+            {
+              sc_regSet (4, 1);
+              return -1;
+            }
+          ins_count = oper - 1;
+        }
     }
   return 0;
 }
@@ -121,7 +119,6 @@ readVvod (int oper)
   int vvod;
   rk_mytermrestore ();
   mt_gotoXY (23, 14);
-  write (0, " --> ", strlen (" --> "));
   read (0, vvvod, sizeof (vvod));
   fflush (0);
   rk_mytermregime (1, 30, 0, 1, 1);
@@ -139,6 +136,7 @@ readVvod (int oper)
       vvod = vvod | 0x4000;
     }
   sc_memorySet (oper, vvod);
+  ClearSpace (23, 14, 2);
   return 0;
 }
 
@@ -157,7 +155,7 @@ writeMemoryValue (int operand)
                           command, operand);
   snprintf (buf, 6, "%c%02X%02X", (value & 0x4000) ? '-' : '+', command,
             operand);
-  mt_gotoXY (23, 14);
+  mt_gotoXY (23, 15);
   write (1, buf, need);
   getchar ();
   return 0;

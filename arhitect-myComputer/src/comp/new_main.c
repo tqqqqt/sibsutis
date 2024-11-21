@@ -22,10 +22,10 @@ main ()
   signal (SIGUSR1, SignalHandler);
   signal (SIGUSR2, SignalHandler);
 
-  nval.it_interval.tv_sec = 2;
-  nval.it_interval.tv_usec = 0;
-  nval.it_value.tv_sec = 1;
-  nval.it_value.tv_usec = 0;
+  nval.it_interval.tv_sec = 0;
+  nval.it_interval.tv_usec = 50000;
+  nval.it_value.tv_sec = 0;
+  nval.it_value.tv_usec = 50000;
 
   rk_mytermsave ();
   sc_memoryInit ();
@@ -33,27 +33,17 @@ main ()
 
   sc_regSet (8, 1);
 
-  /*sc_memorySet (10, 0x7FFF);
-  sc_memorySet (0, 1);
-  sc_memorySet (5, 4543);
-  sc_memorySet (50, 0777);*/
-  // ac=5;
-
   mt_setbgcolor (no_col);
   mt_setfgcolor (white);
   mt_clrscr ();
+
   LoadCharFont ();
-  Memory_block ();
-  Acum_block ();
-  Ins_block ();
-  Operation_block (ins_count);
-  Flag_block ();
-  BigChar_block ();
-  Button_block ();
+  UpdateGraphic (0, 0);
 
   while (i == 0)
     {
-      // rk_mytermregime (0, 0, 0, 1, 1);
+      UpdateGraphic (1, 0);
+
       key_vvod = -1;
       mt_gotoXY (23, 14);
       sc_regGet (8, &flag);
@@ -62,23 +52,17 @@ main ()
           rk_mytermregime (1, 30, 0, 1, 1);
           rk_readkey (&key_vvod);
           rk_mytermrestore ();
-          if (key_vvod == -1)
-            {
-              write (0, " ...", strlen (" ..."));
-            }
-          else if (key_vvod == 1)
+          /* if (key_vvod == -1)
+             {
+                 mt_gotoXY (23, 14);
+               write (0, " ...", strlen (" ..."));
+             }*/
+          if (key_vvod == 1)
             {
               if (selected_mas - 10 >= 0)
                 {
                   ClearSpace (23, 14, 1);
                   selected_mas -= 10;
-                  BigChar_block ();
-                  Operation_block (ins_count);
-                  Memory_block ();
-                  Acum_block ();
-                  Ins_block ();
-                  Flag_block ();
-                  Memory_block ();
                 }
             }
           else if (key_vvod == 2)
@@ -87,13 +71,6 @@ main ()
                 {
                   ClearSpace (23, 14, 1);
                   selected_mas += 10;
-                  BigChar_block ();
-                  Memory_block ();
-                  Operation_block (ins_count);
-                  Acum_block ();
-                  Ins_block ();
-                  Flag_block ();
-                  Memory_block ();
                 }
             }
           else if (key_vvod == 3)
@@ -102,13 +79,6 @@ main ()
                 {
                   ClearSpace (23, 14, 1);
                   selected_mas += 1;
-                  BigChar_block ();
-                  Memory_block ();
-                  Operation_block (ins_count);
-                  Acum_block ();
-                  Ins_block ();
-                  Flag_block ();
-                  Memory_block ();
                 }
             }
           else if (key_vvod == 4)
@@ -117,19 +87,12 @@ main ()
                 {
                   ClearSpace (23, 14, 1);
                   selected_mas -= 1;
-                  BigChar_block ();
-                  Memory_block ();
-                  Acum_block ();
-                  Operation_block (ins_count);
-                  Ins_block ();
-                  Flag_block ();
-                  Memory_block ();
                 }
             }
           else if (key_vvod == 5)
             {
               errorFlag = 0;
-              ClearSpace (23, 14, 1);
+              ClearSpace (23, 14, 2);
               ClearSpace (2, 69, 1);
               mt_gotoXY (2, 70);
               read (0, vvod, sizeof (vvod));
@@ -157,19 +120,16 @@ main ()
                       ac = vvodNumber;
                     }
                 }
-              Acum_block ();
             }
           else if (key_vvod == 6)
             {
-              ClearSpace (23, 14, 1);
+              ClearSpace (23, 14, 2);
               ClearSpace (5, 70, 1);
               mt_gotoXY (5, 71);
               read (0, vvod, sizeof (vvod));
               fflush (0);
               vvodNumber = (int)strtol (&vvod[0], NULL, 10);
               ins_count = (uint16_t)vvodNumber;
-              Ins_block ();
-              Operation_block (ins_count);
             }
           else if (key_vvod == 7)
             {
@@ -205,14 +165,11 @@ main ()
                         sc_memorySet (selected_mas, vvodNumber);
                     }
                 }
-              Memory_block ();
-              Operation_block (ins_count);
-              BigChar_block ();
               ClearSpace (23, 14, 2);
             }
           else if (key_vvod == 8)
             {
-              ClearSpace (23, 14, 1);
+              ClearSpace (23, 14, 2);
               break;
             }
           else if (key_vvod == 9)
@@ -220,7 +177,6 @@ main ()
               ClearSpace (23, 14, 2);
               sc_regSet (8, 0);
               setitimer (ITIMER_REAL, &nval, &oval);
-              Operation_block (ins_count);
             }
           else if (key_vvod == 10)
             {
@@ -229,14 +185,8 @@ main ()
               fflush (0);
               file_name[temp - 1] = '\0';
               ClearSpace (23, 14, 2);
-              sc_memoryLoad (file_name);
-              BigChar_block ();
-              Memory_block ();
-              Operation_block (ins_count);
-              Acum_block ();
-              Ins_block ();
-              Flag_block ();
-              Memory_block ();
+              sc_memoryLoad ((char *)file_name);
+              // Memory_block (0, 1);
             }
           else if (key_vvod == 11)
             {
@@ -249,11 +199,6 @@ main ()
             {
               ClearSpace (23, 14, 2);
               raise (SIGUSR1);
-              Memory_block ();
-              Ins_block ();
-              Acum_block ();
-              Operation_block (ins_count);
-              BigChar_block ();
             }
           else if (key_vvod == 13)
             {
@@ -262,13 +207,7 @@ main ()
               fflush (0);
               file_name[temp - 1] = '\0';
               ClearSpace (23, 14, 2);
-              BigChar_block ();
-              Memory_block ();
-              Operation_block (ins_count);
-              Acum_block ();
-              Ins_block ();
-              Flag_block ();
-              sc_memorySave (file_name);
+              sc_memorySave ((char *)file_name);
             }
         }
     }

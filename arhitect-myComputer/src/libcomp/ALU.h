@@ -21,4 +21,3 @@ int add (int value);
 int sub (int value);
 int divv (int value);
 int mul (int value);
-int orr (int value);

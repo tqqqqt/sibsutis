@@ -18,14 +18,15 @@
 
 extern size_t size_need_writ;
 
-void Memory_block ();
-void Acum_block ();
-void Ins_block ();
-void Operation_block ();
-void Flag_block ();
-void BigChar_block ();
-void Button_block ();
+void Memory_block (int mode, int check);
+void Acum_block (int mode);
+void Ins_block (int mode);
+void Operation_block (int mode);
+void Flag_block (int mode);
+void BigChar_block (int mode);
+void Button_block (int mode);
 void LoadCharFont ();
 
 void ClearSpace (int y, int x, int llenght);
+void UpdateGraphic (int mode, int check);
 void SignalHandler (int signal);
