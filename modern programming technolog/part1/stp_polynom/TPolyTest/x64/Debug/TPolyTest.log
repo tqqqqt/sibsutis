@@ -1,0 +1,4 @@
+﻿  TPolyTest.cpp
+D:\raboti\visual project\stp_polynom\stp_polynom\TMember.h(63,12): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+     Создается библиотека D:\raboti\visual project\stp_polynom\x64\Debug\TPolyTest.lib и объект D:\raboti\visual project\stp_polynom\x64\Debug\TPolyTest.exp
+  TPolyTest.vcxproj -> D:\raboti\visual project\stp_polynom\x64\Debug\TPolyTest.dll

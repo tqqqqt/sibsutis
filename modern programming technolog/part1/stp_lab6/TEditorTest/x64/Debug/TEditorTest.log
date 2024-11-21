@@ -1,0 +1,4 @@
+﻿  TEditorTest.cpp
+D:\raboti\visual project\stp_lab6\stp_lab6\TEditor.h(76,36): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+     Создается библиотека D:\raboti\visual project\stp_lab6\x64\Debug\TEditorTest.lib и объект D:\raboti\visual project\stp_lab6\x64\Debug\TEditorTest.exp
+  TEditorTest.vcxproj -> D:\raboti\visual project\stp_lab6\x64\Debug\TEditorTest.dll

@@ -1,0 +1,6 @@
+D:\raboti\visual project\stp_lab2\lab_lib\bin\Debug\lab_lib.dll
+D:\raboti\visual project\stp_lab2\lab_lib\bin\Debug\lab_lib.pdb
+D:\raboti\visual project\stp_lab2\lab_lib\obj\Debug\lab_lib.csproj.AssemblyReference.cache
+D:\raboti\visual project\stp_lab2\lab_lib\obj\Debug\lab_lib.csproj.CoreCompileInputs.cache
+D:\raboti\visual project\stp_lab2\lab_lib\obj\Debug\lab_lib.dll
+D:\raboti\visual project\stp_lab2\lab_lib\obj\Debug\lab_lib.pdb

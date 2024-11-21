@@ -1,0 +1,7 @@
+﻿  MathLib.cpp
+D:\raboti\visual project\stp_lab3\stp_lab3\MathLib.cpp(14,3): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\raboti\visual project\stp_lab3\stp_lab3\MathLib.cpp(30,36): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\raboti\visual project\stp_lab3\stp_lab3\MathLib.cpp(30,58): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  stp_lab3.cpp
+  Создание кода...
+  stp_lab3.vcxproj -> D:\raboti\visual project\stp_lab3\x64\Debug\stp_lab3.exe

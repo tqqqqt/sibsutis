@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stp_lab2", "stp_lab2\stp_lab2.csproj", "{2CD33AF7-643A-45AE-B2C0-248544142350}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab_lib", "lab_lib\lab_lib.csproj", "{0A98CABC-8355-4892-82C7-C5D4F0A3B9BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab_tests", "lab_tests\lab_tests.csproj", "{62A23F6A-DCF9-4768-A8B0-2F0715E0BB4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CD33AF7-643A-45AE-B2C0-248544142350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CD33AF7-643A-45AE-B2C0-248544142350}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CD33AF7-643A-45AE-B2C0-248544142350}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CD33AF7-643A-45AE-B2C0-248544142350}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A98CABC-8355-4892-82C7-C5D4F0A3B9BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A98CABC-8355-4892-82C7-C5D4F0A3B9BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A98CABC-8355-4892-82C7-C5D4F0A3B9BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A98CABC-8355-4892-82C7-C5D4F0A3B9BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62A23F6A-DCF9-4768-A8B0-2F0715E0BB4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62A23F6A-DCF9-4768-A8B0-2F0715E0BB4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62A23F6A-DCF9-4768-A8B0-2F0715E0BB4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62A23F6A-DCF9-4768-A8B0-2F0715E0BB4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {548EC4A0-4C16-4A6C-AACE-5A6419256EE8}
+	EndGlobalSection
+EndGlobal

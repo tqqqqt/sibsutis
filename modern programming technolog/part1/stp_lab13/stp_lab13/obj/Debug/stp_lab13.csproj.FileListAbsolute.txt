@@ -1,0 +1,8 @@
+D:\raboti\visual project\stp_lab13\stp_lab13\obj\Debug\stp_lab13.csproj.AssemblyReference.cache
+D:\raboti\visual project\stp_lab13\stp_lab13\obj\Debug\stp_lab13.csproj.SuggestedBindingRedirects.cache
+D:\raboti\visual project\stp_lab13\stp_lab13\obj\Debug\stp_lab13.csproj.CoreCompileInputs.cache
+D:\raboti\visual project\stp_lab13\stp_lab13\bin\Debug\stp_lab13.exe.config
+D:\raboti\visual project\stp_lab13\stp_lab13\bin\Debug\stp_lab13.exe
+D:\raboti\visual project\stp_lab13\stp_lab13\bin\Debug\stp_lab13.pdb
+D:\raboti\visual project\stp_lab13\stp_lab13\obj\Debug\stp_lab13.exe
+D:\raboti\visual project\stp_lab13\stp_lab13\obj\Debug\stp_lab13.pdb

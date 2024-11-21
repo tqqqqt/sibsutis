@@ -1,0 +1,8 @@
+﻿  LabTest.cpp
+D:\raboti\visual project\stp_lab3\stp_lab3\MathLib.cpp(14,3): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\raboti\visual project\stp_lab3\stp_lab3\MathLib.cpp(30,36): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\raboti\visual project\stp_lab3\stp_lab3\MathLib.cpp(30,58): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\raboti\visual project\stp_lab3\LabTest\LabTest.cpp(115,23): warning C4101: error_mes: неиспользованная локальная переменная
+D:\raboti\visual project\stp_lab3\LabTest\LabTest.cpp(129,23): warning C4101: error_mes: неиспользованная локальная переменная
+D:\raboti\visual project\stp_lab3\LabTest\LabTest.cpp(144,23): warning C4101: error_mes: неиспользованная локальная переменная
+  LabTest.vcxproj -> D:\raboti\visual project\stp_lab3\x64\Debug\LabTest.dll

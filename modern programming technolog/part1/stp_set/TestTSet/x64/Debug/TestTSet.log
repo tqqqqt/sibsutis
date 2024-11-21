@@ -1,0 +1,11 @@
+﻿  TestTSet.cpp
+D:\raboti\visual project\stp_set\stp_set\TSet.h(39,1): warning C4812: устаревший стиль объявления: используйте "TSet<T>::TSet" как альтернативу
+D:\raboti\visual project\stp_set\stp_set\TSet.h(39,1): warning C4812: устаревший стиль объявления: используйте "TSet<int>::TSet" как альтернативу
+D:\raboti\visual project\stp_set\stp_set\TSet.h(39,45): message : во время компиляции функции-члена класс шаблон "TSet<int>::TSet(const TSet<int> &)"
+D:\raboti\visual project\stp_set\TestTSet\TestTSet.cpp(30,14): message : выполняется компиляция ссылки на экземпляр шаблон функции "TSet<int>::TSet(const TSet<int> &)"
+D:\raboti\visual project\stp_set\TestTSet\TestTSet.cpp(19,1): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "TSet<int>"
+D:\raboti\visual project\stp_set\stp_set\TSet.h(113,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\raboti\visual project\stp_set\stp_set\TSet.h(112,22): message : во время компиляции функции-члена класс шаблон "int TSet<int>::count(void)"
+D:\raboti\visual project\stp_set\TestTSet\TestTSet.cpp(21,20): message : выполняется компиляция ссылки на экземпляр шаблон функции "int TSet<int>::count(void)"
+     Создается библиотека D:\raboti\visual project\stp_set\x64\Debug\TestTSet.lib и объект D:\raboti\visual project\stp_set\x64\Debug\TestTSet.exp
+  TestTSet.vcxproj -> D:\raboti\visual project\stp_set\x64\Debug\TestTSet.dll

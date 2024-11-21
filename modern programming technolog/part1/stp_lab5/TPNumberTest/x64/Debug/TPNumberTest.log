@@ -1,0 +1,11 @@
+﻿  TPNumberTest.cpp
+D:\raboti\visual project\stp_lab5\stp_lab5\TPNumber.h(52,21): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+D:\raboti\visual project\stp_lab5\stp_lab5\TPNumber.h(135,13): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+D:\raboti\visual project\stp_lab5\stp_lab5\TPNumber.h(149,35): warning C4244: аргумент: преобразование "double" в "_Elem", возможна потеря данных
+          with
+          [
+              _Elem=char
+          ]
+D:\raboti\visual project\stp_lab5\stp_lab5\TPNumber.h(168,32): warning C4101: exp: неиспользованная локальная переменная
+D:\raboti\visual project\stp_lab5\stp_lab5\TPNumber.h(186,32): warning C4101: exp: неиспользованная локальная переменная
+  TPNumberTest.vcxproj -> D:\raboti\visual project\stp_lab5\x64\Debug\TPNumberTest.dll

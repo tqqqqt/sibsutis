@@ -1,0 +1,3 @@
+﻿  stp_polynom.cpp
+D:\raboti\visual project\stp_polynom\stp_polynom\TMember.h(63,12): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+  stp_polynom.vcxproj -> D:\raboti\visual project\stp_polynom\x64\Debug\stp_polynom.exe
