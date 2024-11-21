@@ -1,0 +1,13 @@
+*.o
+*.exe
+*.dll
+*.swp
+*~
+*.d
+*.so
+*.html
+*.txt
+*.a
+compLab1
+compLab2
+compLab

@@ -1,0 +1,15 @@
+image: registry.csc.sibsutis.ru/ci/git-clang-format
+stages:
+  - check-format
+  - build
+
+check-format:
+  stage: check-format
+  script:
+    - find . -type f -name '*.[ch]' | xargs clang-format --style GNU -i --verbose
+    - git diff --exit-code
+
+build:
+  stage: build
+  script:
+    - make
