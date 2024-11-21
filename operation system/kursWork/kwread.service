@@ -1,0 +1,10 @@
+[Unit]
+Description=kwread
+
+[Service]
+User=user
+Group=user
+ExecStart=/usr/sbin/kwreadelf
+
+[Install]
+WantedBy=multi-user.target
