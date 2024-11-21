@@ -1,0 +1,103 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Student.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:locc="clr-namespace:Student.Models"
+        mc:Ignorable="d" d:DesignWidth="960" d:DesignHeight="704"
+		Width="959" Height="704"
+        x:Class="Student.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Student">
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+	
+	<Window.Resources>
+		<vm:ValueConvert x:Key="valueConvert"/>
+	</Window.Resources>
+		
+	<Window.DataTemplates>
+		<DataTemplate DataType="{x:Type locc:StudenItem}">
+			<Grid ShowGridLines="false" ColumnDefinitions="125,137,137,137,137,137,137">
+				<TextBlock Grid.Column="0" Background="{Binding coll}" Text="{Binding St_FIO}"/>
+				<TextBlock Grid.Column="1" Text="{Binding St_Pr1, StringFormat='               {0}'}" Background="{Binding St_Pr1, Converter={StaticResource valueConvert}}"/>
+				<TextBlock Grid.Column="2" Text="{Binding St_Pr2, StringFormat='               {0}'}" Background="{Binding St_Pr2, Converter={StaticResource valueConvert}}"/>
+				<TextBlock Grid.Column="3" Text="{Binding St_Pr3, StringFormat='               {0}'}" Background="{Binding St_Pr3, Converter={StaticResource valueConvert}}"/>
+				<TextBlock Grid.Column="4" Text="{Binding St_Pr4, StringFormat='               {0}'}" Background="{Binding St_Pr4, Converter={StaticResource valueConvert}}"/>
+				<TextBlock Grid.Column="5" Text="{Binding St_Pr5, StringFormat='               {0}'}" Background="{Binding St_Pr5, Converter={StaticResource valueConvert}}"/>
+				<TextBlock Grid.Column="6" Text="{Binding St_Sr, StringFormat='               {0:0.0}'}" Background="{Binding St_Sr, Converter={StaticResource valueConvert}}"/>
+			</Grid>
+		</DataTemplate>
+	</Window.DataTemplates>
+		
+	<Grid RowDefinitions="20*,344*,20*,48*,48*,48*">
+		<Grid.Styles>
+			<Style Selector="ComboBox">
+				<Setter Property="Height" Value="66"/>
+				<Setter Property="Width" Value="159"/>
+			</Style>
+		</Grid.Styles>
+		<Grid ShowGridLines="True" Grid.Row="0" ColumnDefinitions="137*,137*,137*,137*,137*,137*,137*">
+			<TextBlock Grid.Column="0" Text="ФИО" TextAlignment="Center"/>
+			<TextBlock Grid.Column="1" Text="Предмет 1" TextAlignment="Center"/>
+			<TextBlock Grid.Column="2" Text="Предмет 2" TextAlignment="Center"/>
+			<TextBlock Grid.Column="3" Text="Предмет 3" TextAlignment="Center"/>
+			<TextBlock Grid.Column="4" Text="Предмет 4" TextAlignment="Center"/>
+			<TextBlock Grid.Column="5" Text="Предмет 5" TextAlignment="Center"/>
+			<TextBlock Grid.Column="6" Text="Средний бал" TextAlignment="Center"/>
+		</Grid>
+		<ListBox Name="listbox" Grid.Row="1" Grid.Column="0" Items="{Binding StudentItems, Mode=OneWay}" Background="White" SelectedIndex="{Binding SelecetInd}"/>
+		<Grid Grid.Row="2" ShowGridLines="True" ColumnDefinitions="137*,137*,137*,137*,137*,137*,137*">
+			<TextBlock Grid.Column="0" Text="Средний бал"/>
+			<TextBlock Name="text_sr1" Grid.Column="1" Text="{Binding SR1, Mode=OneWay}" Background="{Binding SR1, Mode=OneWay, Converter={StaticResource valueConvert}}" TextAlignment="Center"/>
+			<TextBlock Name="text_sr2" Grid.Column="2" Text="{Binding SR2, Mode=OneWay}" Background="{Binding SR2, Mode=OneWay, Converter={StaticResource valueConvert}}" TextAlignment="Center"/>
+			<TextBlock Name="text_sr3" Grid.Column="3" Text="{Binding SR3, Mode=OneWay}" Background="{Binding SR3, Mode=OneWay, Converter={StaticResource valueConvert}}" TextAlignment="Center"/>
+			<TextBlock Name="text_sr4" Grid.Column="4" Text="{Binding SR4, Mode=OneWay}" Background="{Binding SR4, Mode=OneWay, Converter={StaticResource valueConvert}}" TextAlignment="Center"/>
+			<TextBlock Name="text_sr5" Grid.Column="5" Text="{Binding SR5, Mode=OneWay}" Background="{Binding SR5, Mode=OneWay, Converter={StaticResource valueConvert}}" TextAlignment="Center"/>
+			<TextBlock Name="text_sr6" Grid.Column="6" Text="{Binding SRR, Mode=OneWay}" Background="{Binding SRR, Mode=OneWay, Converter={StaticResource valueConvert}}" TextAlignment="Center"/>
+		</Grid>
+		<Grid Grid.Row="3" ColumnDefinitions="*,*,*,*,*,*">
+			<TextBox Name="Sel" Text="{Binding New_TEXT}" Grid.Row="3" Grid.Column="0" Width="159" HorizontalAlignment="Left"></TextBox>
+			<ComboBox Name="Sel1" Grid.Column="1" Grid.Row="3" SelectedIndex="{Binding PR1}">
+				<ComboBoxItem></ComboBoxItem>
+				<ComboBoxItem>0</ComboBoxItem>
+				<ComboBoxItem>1</ComboBoxItem>
+				<ComboBoxItem>2</ComboBoxItem>
+			</ComboBox>
+			<ComboBox Name="Sel2" Grid.Column="2" Grid.Row="3" SelectedIndex="{Binding PR2}">
+				<ComboBoxItem></ComboBoxItem>
+				<ComboBoxItem>0</ComboBoxItem>
+				<ComboBoxItem>1</ComboBoxItem>
+				<ComboBoxItem>2</ComboBoxItem>
+			</ComboBox>
+			<ComboBox Name="Sel3" Grid.Column="3" Grid.Row="3" SelectedIndex="{Binding PR3}">
+				<ComboBoxItem></ComboBoxItem>
+				<ComboBoxItem>0</ComboBoxItem>
+				<ComboBoxItem>1</ComboBoxItem>
+				<ComboBoxItem>2</ComboBoxItem>
+			</ComboBox>
+			<ComboBox Name="Sel4" Grid.Column="4" Grid.Row="3" SelectedIndex="{Binding PR4}">
+				<ComboBoxItem></ComboBoxItem>
+				<ComboBoxItem>0</ComboBoxItem>
+				<ComboBoxItem>1</ComboBoxItem>
+				<ComboBoxItem>2</ComboBoxItem>
+			</ComboBox>
+			<ComboBox Name="Sel5" Grid.Column="5" Grid.Row="3" SelectedIndex="{Binding PR5}">
+				<ComboBoxItem></ComboBoxItem>
+				<ComboBoxItem>0</ComboBoxItem>
+				<ComboBoxItem>1</ComboBoxItem>
+				<ComboBoxItem>2</ComboBoxItem>
+			</ComboBox>
+		</Grid>
+		<Grid Grid.Row="4" ColumnDefinitions="*,*">
+			<Button Name="b_add" Grid.Column="0" Content="Добавить" Width="479.5" Height="62" FontSize="30" Command="{Binding AddedItem}"/>
+			<Button Name="b_del" Grid.Column="1" Content="Удалить" Width="479.5" Height="62" FontSize="30" Command="{Binding RemoveItem}"/>
+		</Grid>
+		<Grid Grid.Row="5" ColumnDefinitions="*,*">
+			<Button Name="b_save" Grid.Column="0" Content="Сохранить в файл" Width="479.5" Height="62" FontSize="30" Command="{Binding SaveItem}"/>
+			<Button Name="b_load" Grid.Column="1" Content="Загрузить из файла" Width="479.5" Height="62" FontSize="30" Command="{Binding LoadItem}"/>
+		</Grid>
+	</Grid>
+</Window>

@@ -1,0 +1,206 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ShemaPaint.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:views="clr-namespace:ShemaPaint.Views.CustomElements"
+		xmlns:locc="clr-namespace:ShemaPaint.Models"
+		xmlns:spp="using:Avalonia.Controls.Shapes"
+        mc:Ignorable="d" d:DesignWidth="1400" d:DesignHeight="750"
+		MaxWidth="1400" MinWidth="1400"
+		MaxHeight="750" MinHeight="750"
+        x:Class="ShemaPaint.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="ShemaPaint">
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<Grid ShowGridLines="True" RowDefinitions="20,*">
+		<Menu Grid.Row="0" Margin="0,0,0,5">
+			<MenuItem Header="Действие">
+				<RadioButton IsChecked="{Binding EventLine}"
+							 GroupName="Event" Content="Связать элементы"/>
+				<RadioButton IsChecked="{Binding EventClass}"
+							 GroupName="Event" Content="Добавить класс"/>
+				<RadioButton IsChecked="{Binding EventInterface}"
+							 GroupName="Event" Content="Добавить интерфейс"/>
+				<RadioButton IsChecked="{Binding EventMove}"
+							 GroupName="Event" Content="Передвинуть элементы"/>
+				<RadioButton IsChecked="{Binding EventChangeOption}"
+							 GroupName="Event" Content="Изменить содержание"/>
+				<RadioButton IsChecked="{Binding EventChangeForm}"
+							 GroupName="Event" Content="Изменить внеш. вид"/>
+				<RadioButton IsChecked="{Binding EventDelete}"
+							 GroupName="Event" Content="Удалить элемент"/>
+			</MenuItem>
+			<MenuItem Header="Связки">
+				<RadioButton IsChecked="{Binding LineNasled}"
+							 GroupName="Lines" Content="Наследование"/>
+				<RadioButton IsChecked="{Binding LineRealiz}"
+							 GroupName="Lines" Content="Реализация"/>
+				<RadioButton IsChecked="{Binding LineZavis}"
+							 GroupName="Lines" Content="Зависимость"/>
+				<RadioButton IsChecked="{Binding LineAgreg}"
+							 GroupName="Lines" Content="Агрегирование"/>
+				<RadioButton IsChecked="{Binding LineCompos}"
+							 GroupName="Lines" Content="Композиция"/>
+				<RadioButton IsChecked="{Binding LineAsoc}"
+							 GroupName="Lines" Content="Ассоциация"/>
+			</MenuItem>
+			<MenuItem Header="Загрузить" Click="OpenLoadMenu"/>
+			<MenuItem Header="Сохранить" Click="OpenSaveMenu"/>
+		</Menu>
+		<ItemsControl Grid.Row="1" Items="{Binding ElementColection}"
+					  PointerPressed="PointPresedOn"
+					  DragDrop.AllowDrop="True"
+					  DoubleTapped="DoubleTap"
+					  Background="White"
+					  Name="canvas"
+					  Width="{Binding $parent[Window].Width}"
+					  Height="730">
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<Canvas Name="realCanvas"/>
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.DataTemplates>
+				<DataTemplate DataType="{x:Type locc:El_Class}">
+					<views:ClassRectangle Height="{Binding Height}"
+										  Width="{Binding Width}"
+										  NameClass="{Binding Name}"
+										  PeremClass="{Binding Atrib_colection}"
+										  OperClass="{Binding Oper_colection}"
+										  FontSizeMain="{Binding FontSizeMain}">
+						<views:ClassRectangle.RenderTransform>
+							<TranslateTransform X="{Binding StartPoint.X}"
+												Y="{Binding StartPoint.Y}"/>
+						</views:ClassRectangle.RenderTransform>
+					</views:ClassRectangle>
+				</DataTemplate>
+				<DataTemplate DataType="{x:Type locc:El_Interface}">
+					<views:InterfaceRectangle Height="{Binding Height}"
+											  Width="{Binding Width}"
+										  NameClass="{Binding Name}"
+										  PeremClass="{Binding AtribColection}"
+										  OperClass="{Binding OperColection}"
+										  FontSizeMain="{Binding FontSizeMain}">
+						<views:InterfaceRectangle.RenderTransform>
+							<TranslateTransform X="{Binding StartPoint.X}"
+												Y="{Binding StartPoint.Y}"/>
+						</views:InterfaceRectangle.RenderTransform>
+					</views:InterfaceRectangle>
+				</DataTemplate>
+				<DataTemplate DataType="{x:Type locc:LineNasled}">
+					<Canvas>
+						<Line StartPoint="{Binding StartPoint}"
+							  EndPoint="{Binding EndPoint}"
+							  Stroke="Black" StrokeThickness="2"
+							  Width="0" Height="0"/>
+						<Path Data="{Binding PathPoints}" Stroke="Black"
+							  Fill="{Binding FillColor}" StrokeThickness="2"
+							  Width="0" Height="0">
+							<Path.RenderTransform>
+								<RotateTransform Angle="{Binding RotateAngle}"
+												 CenterX="{Binding EndPoint.X}"
+												 CenterY="{Binding EndPoint.Y}"/>
+							</Path.RenderTransform>
+						</Path>
+
+					</Canvas>
+				</DataTemplate>
+				<DataTemplate DataType="{x:Type locc:LineRealiz}">
+					<Canvas>
+						<Line StartPoint="{Binding StartPoint}"
+							  EndPoint="{Binding EndPoint}"
+							  Stroke="Black" StrokeThickness="2"
+							  StrokeDashArray="10,10"
+							  Width="0" Height="0"/>
+						<Path Data="{Binding PathPoints}" Stroke="Black"
+							  Fill="{Binding FillColor}" StrokeThickness="2"
+							  Width="0" Height="0">
+							<Path.RenderTransform>
+								<RotateTransform Angle="{Binding RotateAngle}"
+												 CenterX="{Binding EndPoint.X}"
+												 CenterY="{Binding EndPoint.Y}"/>
+							</Path.RenderTransform>
+						</Path>
+					</Canvas>
+				</DataTemplate>
+				<DataTemplate DataType="{x:Type locc:LineZavis}">
+					<Canvas>
+						<Line StartPoint="{Binding StartPoint}"
+							  EndPoint="{Binding EndPoint}"
+							  Stroke="Black" StrokeThickness="2"
+							  StrokeDashArray="10,10"
+							  Width="0" Height="0"/>
+						<Path Data="{Binding PathPoints}" Stroke="Black"
+							  Fill="{Binding FillColor}" StrokeThickness="2"
+							  Width="0" Height="0">
+							<Path.RenderTransform>
+								<RotateTransform Angle="{Binding RotateAngle}"
+												 CenterX="{Binding EndPoint.X}"
+												 CenterY="{Binding EndPoint.Y}"/>
+							</Path.RenderTransform>
+						</Path>
+					</Canvas>
+				</DataTemplate>
+				<DataTemplate DataType="{x:Type locc:LineAgreg}">
+					<Canvas>
+						<Line StartPoint="{Binding StartPoint}"
+							  EndPoint="{Binding EndPoint}"
+							  Stroke="Black" StrokeThickness="2"
+							  StrokeDashOffset="40"
+							  Width="0" Height="0"/>
+						<Path Data="{Binding PathPoints}" Stroke="Black"
+							  Fill="{Binding FillColor}" StrokeThickness="2"
+							  Width="0" Height="0">
+							<Path.RenderTransform>
+								<RotateTransform Angle="{Binding RotateAngle}"
+												 CenterX="{Binding EndPoint.X}"
+												 CenterY="{Binding EndPoint.Y}"/>
+							</Path.RenderTransform>
+						</Path>
+					</Canvas>
+				</DataTemplate>
+				<DataTemplate DataType="{x:Type locc:LineCompos}">
+					<Canvas>
+						<Line StartPoint="{Binding StartPoint}"
+							  EndPoint="{Binding EndPoint}"
+							  Stroke="Black" StrokeThickness="2"
+							  StrokeDashOffset="40"
+							  Width="0" Height="0"/>
+						<Path Data="{Binding PathPoints}" Stroke="Black"
+							  Fill="{Binding FillColor}" StrokeThickness="2"
+							  Width="0" Height="0">
+							<Path.RenderTransform>
+								<RotateTransform Angle="{Binding RotateAngle}"
+												 CenterX="{Binding EndPoint.X}"
+												 CenterY="{Binding EndPoint.Y}"/>
+							</Path.RenderTransform>
+						</Path>
+					</Canvas>
+				</DataTemplate>
+				<DataTemplate DataType="{x:Type locc:LineAsoc}">
+					<Canvas>
+						<Line StartPoint="{Binding StartPoint}"
+							  EndPoint="{Binding EndPoint}"
+							  Stroke="Black" StrokeThickness="2"
+							  StrokeDashOffset="40"
+							  Width="0" Height="0"/>
+						<Path Data="{Binding PathPoints}" Stroke="Black"
+							  Fill="{Binding FillColor}" StrokeThickness="2"
+							  Width="0" Height="0">
+							<Path.RenderTransform>
+								<RotateTransform Angle="{Binding RotateAngle}"
+												 CenterX="{Binding EndPoint.X}"
+												 CenterY="{Binding EndPoint.Y}"/>
+							</Path.RenderTransform>
+						</Path>
+					</Canvas>
+				</DataTemplate>
+			</ItemsControl.DataTemplates>
+		</ItemsControl>
+	</Grid>
+</Window>

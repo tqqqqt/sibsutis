@@ -1,0 +1,92 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Graphic.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:locc="clr-namespace:Graphic.Models"
+		xmlns:spp="using:Avalonia.Controls.Shapes"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		MinWidth="1400" MinHeight="786"
+		MaxWidth="1400" MaxHeight="786"
+        x:Class="Graphic.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Graphic">
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<Grid ShowGridLines="True" RowDefinitions="20,*">
+		<Menu Grid.Row="0" Margin="0,0,0,5">
+			<MenuItem Name="menuExport" Header="Экспортировать">
+				<MenuItem Header="Экспортировать в PNG" Command="{Binding SavePng}"/>
+				<MenuItem Header="Экспортировать в JSON" Command="{Binding SaveJSON}"/>
+				<MenuItem Header="Экспортировать в XML" Command="{Binding SaveXML}"/>
+			</MenuItem>
+			<MenuItem Name="menuImport" Header="Импортировать">
+				<MenuItem Header="Импортировать из JSON" Command="{Binding LoadJSON}"/>
+				<MenuItem Header="Импортировать из XML" Command="{Binding LoadXML}"/>
+			</MenuItem>
+		</Menu>
+		<Grid ShowGridLines="True" Grid.Row="1" ColumnDefinitions="300, * , 200">
+			<ComboBox Name="camboBoxShape" Width="300" Grid.Column="0" SelectedIndex="{Binding Combobox_index, Mode=TwoWay}">
+				<ComboBoxItem>Прямая линия</ComboBoxItem>
+				<ComboBoxItem>Ломаная линия</ComboBoxItem>
+				<ComboBoxItem>Многоугольник</ComboBoxItem>
+				<ComboBoxItem>Прямоугольник</ComboBoxItem>
+				<ComboBoxItem>Элипс</ComboBoxItem>
+				<ComboBoxItem>Составная фигура</ComboBoxItem>
+			</ComboBox>
+			<ContentControl Content="{Binding Content_colection, Mode=OneWay}" Grid.Column="0"/>
+			<ItemsControl Grid.Column="1" Name="canvas" Items="{Binding Figures_colection, Mode=TwoWay}" Width="900" Height="766" Background="White">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<Canvas/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.DataTemplates>
+					<DataTemplate DataType="{x:Type locc:Gr_Line}">
+						<Line StartPoint="{Binding StartPoint}" EndPoint="{Binding EndPoint}" Stroke="{Binding StrokeColor}" StrokeThickness="{Binding StrokeThic}"/>
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type locc:Gr_PolyLine}">
+						<Polyline Points="{Binding Point_colection}" Stroke="{Binding StrokeColor}" StrokeThickness="{Binding StrokeThic}"/>
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type locc:Gr_Polygon}">
+						<Polygon Points="{Binding Point_colection}" Stroke="{Binding StrokeColor}" StrokeThickness="{Binding StrokeThic}" Fill="{Binding Fill}"/>
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type locc:Gr_Rectangle}">
+						<Rectangle Width="{Binding Width}" Height="{Binding Height}" Fill="{Binding Fill}" Stroke="{Binding StrokeColor}" StrokeThickness="{Binding StrokeThic}">
+							<Rectangle.RenderTransform>
+								<TranslateTransform X="{Binding Start_point.X}" Y="{Binding Start_point.Y}"/>
+							</Rectangle.RenderTransform>
+						</Rectangle>
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type locc:Gr_Ellipse}">
+						<Ellipse Width="{Binding Width}" Height="{Binding Height}" Fill="{Binding Fill}" Stroke="{Binding StrokeColor}" StrokeThickness="{Binding StrokeThic}">
+							<Ellipse.RenderTransform>
+								<TranslateTransform X="{Binding StartPoint.X}" Y="{Binding StartPoint.Y}"/>
+							</Ellipse.RenderTransform>
+						</Ellipse>
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type locc:Gr_Path}">
+						<Path Fill="{Binding Fill}" Data="{Binding Points}" Stroke="{Binding StrokeColor}" StrokeThickness="{Binding StrokeThic}"/>
+					</DataTemplate>
+				</ItemsControl.DataTemplates>
+			</ItemsControl>
+			
+			<ListBox SelectionMode="Single" Name="listBoxShapes" Items="{Binding Figures_colection, Mode=OneWay}" Grid.Column="2" SelectedIndex="{Binding Listbox_index, Mode=TwoWay}">
+				<ListBox.ItemTemplate>
+					<DataTemplate DataType="{x:Type locc:IFigure}">
+						<Grid ColumnDefinitions="*,*">
+							<Button Name="buttonDeleteShape" Grid.Column="1" Command="{Binding $parent[ListBox].DataContext.DeleteBut}" CommandParameter="{Binding}">
+								<Image Source="/Assets/remove.png" Height="20" Width="20"/>
+							</Button>
+							<TextBlock Grid.Column="0" HorizontalAlignment="Left" Text="{Binding Name}"/>
+						</Grid>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</Grid>
+	</Grid>
+	
+</Window>

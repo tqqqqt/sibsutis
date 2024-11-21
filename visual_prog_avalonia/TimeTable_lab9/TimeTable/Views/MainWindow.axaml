@@ -1,0 +1,104 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TimeTable.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:locc="clr-namespace:TimeTable.Models"
+		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="700"
+		MinHeight="700" MaxHeight="700"
+		MinWidth="800" MaxWidth="800"
+        x:Class="TimeTable.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="TimeTable">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<Window.Resources>
+		<vm:ImageConvertor x:Key="imageConvertor"/>
+	</Window.Resources>
+
+	<Grid RowDefinitions="40, 20, *">
+		<WrapPanel Grid.Row="0">
+			<Button Name="buttonOut" Width="100"
+					Click="ButtonFirstClick">
+				<WrapPanel>
+					<Image Height="20" Width="20"
+						   Source="../Assets/aeroplaneUp.png"/>
+					<TextBlock Text="Вылет"/>
+				</WrapPanel>
+			</Button>
+			<Button Name="buttonIn" Width="100"
+					Click="ButtonFirstClick">
+				<WrapPanel>
+					<Image Height="20" Width="20"
+						   Source="../Assets/aeroplaneDown.png"/>
+					<TextBlock Text="Прилет"/>
+				</WrapPanel>
+			</Button>
+			<Button Name="update" Content="Обновить" Width="100"
+					Margin="100,0,100,0" Click="ButtonUpdateClick"/>
+			<Button Name="first" Content="Вчера" Width="100"
+					Click="ButtonDateClick" IsEnabled="True"/>
+			<Button Name="second" Content="Сегодня" Width="100"
+					Click="ButtonDateClick" IsEnabled="True"/>
+			<Button Name="third" Content="Завтра" Width="100"
+					Click="ButtonDateClick" IsEnabled="True"/>
+		</WrapPanel>
+		<WrapPanel Grid.Row="1">
+			<TextBlock Text="Рейс" Margin="5,0,70,0"/>
+			<TextBlock Text="Назначение" Margin="0,0,70,0"/>
+			<TextBlock Text="По расписанию" Margin="0,0,70,0"/>
+			<TextBlock Text="Расчётное" Margin="0,0,70,0"/>
+			<TextBlock Text="Сектор" Margin="0,0,70,0"/>
+			<TextBlock Text="Статус"/>
+		</WrapPanel>
+		<ItemsControl Items="{Binding Colection}" Grid.Row="2">
+			<ItemsControl.ItemTemplate>
+				<DataTemplate DataType="{x:Type locc:TableElement}">
+					<Expander>
+						<Expander.Header>
+							<Grid ColumnDefinitions="0.8*,2*,1.5*,1.5*,20,*">
+								<WrapPanel Grid.Column="0">	
+									<Image Width="20" Height="20"
+									   Source="{Binding Image, Converter={StaticResource imageConvertor}}"/>
+									<TextBlock Text="{Binding Reise}"
+												Margin="5,0,0,0"/>
+									</WrapPanel>
+								<TextBlock Text="{Binding Naznach}"
+										    Margin="0,0,0,0" Grid.Column="1"/>
+								<TextBlock Text="{Binding StringTimeTableTemp}"
+										    Margin="0,0,0,0" Grid.Column="2"/>
+								<TextBlock Text="{Binding StringTimeTableReal}"
+										    Margin="0,0,0,0" Grid.Column="3"/>
+								<TextBlock Text="{Binding Sector}"
+										    Margin="0,0,0,0" Grid.Column="4"/>
+								<TextBlock Text="{Binding Status}" Grid.Column="5"
+										   TextAlignment="Right"/>
+							</Grid>
+						</Expander.Header>
+						<Expander.Content>
+							<WrapPanel>
+								<Image Width="60" Height="60"
+								   Source="{Binding Image, Converter={StaticResource imageConvertor}}"/>
+								<StackPanel Margin="60,0,60,0">
+									<TextBlock Text="{Binding Naznach, StringFormat='Новосибирск -> {0}'}"
+											   Margin="0,0,0,20" FontSize="17"/>
+									<TextBlock Text="{Binding Reise, StringFormat='Номер рейса: {0}'}"/>
+								</StackPanel>
+								<StackPanel>
+									<TextBlock Text="{Binding Sector, StringFormat='Сектор: {0}'}"
+											   Margin="0,0,0,5"/>
+									<TextBlock Text="{Binding Status, StringFormat='Статус: {0}'}"
+											   Margin="0,0,0,5"/>
+									<TextBlock Text="{Binding TimeTableReal, StringFormat='Расчётное время: {0}'}"/>
+								</StackPanel>
+							</WrapPanel>
+						</Expander.Content>
+					</Expander>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+	</Grid>
+</Window>

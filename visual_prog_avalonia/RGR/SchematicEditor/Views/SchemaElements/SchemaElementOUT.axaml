@@ -1,0 +1,48 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SchematicEditor.Views.SchemaElements">
+  <Design.PreviewWith>
+    <controls:SchemaElementOUT />
+  </Design.PreviewWith>
+
+  <Style Selector="controls|SchemaElementOUT">
+    <!-- Set Defaults -->
+    <Setter Property="Template">
+      <ControlTemplate>
+		  <Canvas Name="SchemaElementOUT"
+				  Background="Transparent"
+				  Width="40"
+				  Height="40">
+			  <Border Width="30"
+					  Height="40"
+					  Background="white"
+					  BorderBrush="Black"
+					  BorderThickness="1"
+					  Margin="10,0,0,0">
+				  <TextBlock Text="{TemplateBinding TextOUT}"
+							 FontSize="14"
+							 VerticalAlignment="Center"
+							 HorizontalAlignment="Center"/>
+			  </Border>
+			  <Rectangle ZIndex="2"
+						 Fill="Transparent"
+						 Width="30"
+						 Height="40"
+						 Canvas.Left="10"/>
+			  <Ellipse Name="IN"
+					   Fill="White"
+					   Height="10"
+					   Width="10"
+					   Stroke="Black"
+					   StrokeThickness="1"
+					   ZIndex="2">
+				  <Ellipse.RenderTransform>
+					  <TranslateTransform X="0"
+										  Y="15"/>
+				  </Ellipse.RenderTransform>
+			  </Ellipse>
+		  </Canvas>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

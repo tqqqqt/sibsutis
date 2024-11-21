@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project name="Проект тест">
+  <schemaColection name="схема тест">
+    <elementIn status="1">
+      <outSignal>1</outSignal>
+      <startPoint>210.4, 108</startPoint>
+      <indexElement>0</indexElement>
+    </elementIn>
+    <elementIn status="0">
+      <outSignal>0</outSignal>
+      <startPoint>212, 187.99999999999997</startPoint>
+      <indexElement>1</indexElement>
+    </elementIn>
+    <elementOr>
+      <inSignal1>1</inSignal1>
+      <inSignal2>0</inSignal2>
+      <outSignal>1</outSignal>
+      <startPoint>298.4, 140.79999999999998</startPoint>
+      <indexElement>2</indexElement>
+    </elementOr>
+    <elementOut status="1">
+      <inSignal>1</inSignal>
+      <startPoint>420, 142.4</startPoint>
+      <indexElement>3</indexElement>
+    </elementOut>
+    <line>
+      <startPoint>342.4, 159.2</startPoint>
+      <endPoint>425.4, 162.2</endPoint>
+      <typeFirstElement>2</typeFirstElement>
+      <typeSecondElement>1</typeSecondElement>
+      <nameFirstElement>OUT</nameFirstElement>
+      <nameSecondElement>IN</nameSecondElement>
+      <indexFirstElement>2</indexFirstElement>
+      <indexSecondElement>3</indexSecondElement>
+      <status>1</status>
+    </line>
+    <line>
+      <startPoint>244.8, 127.19999999999999</startPoint>
+      <endPoint>305.4, 150.2</endPoint>
+      <typeFirstElement>2</typeFirstElement>
+      <typeSecondElement>1</typeSecondElement>
+      <nameFirstElement>OUT</nameFirstElement>
+      <nameSecondElement>IN1</nameSecondElement>
+      <indexFirstElement>0</indexFirstElement>
+      <indexSecondElement>2</indexSecondElement>
+      <status>1</status>
+    </line>
+    <line>
+      <startPoint>247.2, 207.20000000000002</startPoint>
+      <endPoint>303.8, 173.4</endPoint>
+      <typeFirstElement>2</typeFirstElement>
+      <typeSecondElement>1</typeSecondElement>
+      <nameFirstElement>OUT</nameFirstElement>
+      <nameSecondElement>IN2</nameSecondElement>
+      <indexFirstElement>1</indexFirstElement>
+      <indexSecondElement>2</indexSecondElement>
+      <status>0</status>
+    </line>
+  </schemaColection>
+</project>

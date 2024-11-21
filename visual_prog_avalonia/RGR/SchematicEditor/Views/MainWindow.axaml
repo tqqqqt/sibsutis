@@ -1,0 +1,75 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:SchematicEditor.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:locc="clr-namespace:SchematicEditor.Models"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		MaxWidth="400" MinWidth="400" Width="400"
+		MaxHeight="460" MinHeight="460" Height="460"
+        x:Class="SchematicEditor.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="RGR - Welcom page">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<Grid RowDefinitions="40,*,100">
+		<TextBlock Grid.Row="0"
+				   Text="Недавно открытые проекты"
+				   TextAlignment="Center"
+				   HorizontalAlignment="Center"
+				   VerticalAlignment="Center"/>
+		<ListBox Grid.Row="1"
+				 Items="{Binding ColectionProjectHistory}"
+				 SelectionMode="Single"
+				 DoubleTapped="DoubleClickOpen">
+			<ListBox.ItemTemplate>
+				<DataTemplate DataType="{x:Type locc:ProjectHistory}">
+					<StackPanel>
+						<Grid ColumnDefinitions="*, 20">
+							<TextBlock Text="{Binding Name}"/>
+							<Button Grid.Column="1"
+									Click="ClickDeleteHistory"
+									Height="20"
+									Width="20">
+								<Image Source="/Assets/deleteImage.png"
+									   Height="18"
+									   Width="18"/>
+							</Button>
+						</Grid>
+						<TextBlock Text="{Binding Path}"
+								   FontSize="10"/>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+		<WrapPanel Grid.Row="2">
+			<Button Name="buttonCreate"
+					Content="Создать"
+					Height="40" Width="180"
+					Click="ClickCreateButton"
+					Margin="10,10,10,10"
+					HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"/>
+			<Button Name="buttonOpen"
+					Content="Открыть"
+					Height="40" Width="180"
+					Click="ClickOpenButton"
+					Margin="10,10,10,10"
+					HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"/>
+			<Button Name="buttonClose"
+					Content="Выйти"
+					Height="40" Width="380"
+					Click="ClickCloseButton"
+					Margin="10,0,10,10"
+					HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"/>
+		</WrapPanel>
+	</Grid>
+</Window>

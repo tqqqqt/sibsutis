@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:RomanNumbersCalculator.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="500"
+		Width="350" Height="500"
+        x:Class="RomanNumbersCalculator.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="RomanNumbersCalculator">
+
+	<Grid RowDefinitions="0.18*, 0.82*" ColumnDefinitions="*" Margin="4">
+		<TextBlock Background="WhiteSmoke" Text="{Binding CurrentNumberRepresentation, Mode=OneWay}" FontSize="50"/>
+		<Grid Grid.Row="2" RowDefinitions="0.25*,0.25*,0.25*,0.25*" ColumnDefinitions="25*,25*,25*,25*" Margin="1">
+			<Grid.Styles>
+				<Style Selector="Button">
+					<Setter Property="Background" Value="White"/>
+					<Setter Property="BorderBrush" Value="Black"/>
+					<Setter Property="Padding" Value="30"/>
+					<Setter Property="FontSize" Value="20"/>
+					<Setter Property="Width" Value="85"/>
+					<Setter Property="Height" Value="100"/>
+				</Style>
+				<Style Selector="Button.tab">
+					<Setter Property="Height" Value="400"/>
+					<Setter Property="VerticalContentAlignment" Value="Center"/>
+				</Style>
+			</Grid.Styles>
+			<Button Name="addI" Grid.Row="0" Grid.Column="0" Content="I" Command="{Binding ButtonAddClick}" CommandParameter="I"/>
+			<Button Name="addC" Grid.Row="0" Grid.Column="1" Content="C" Command="{Binding ButtonAddClick}" CommandParameter="C"/>
+			<Button Name="addPL" Grid.Row="0" Grid.Column="2" Content="+" Command="{Binding PlusClick}"/>
+			<Button Name="addV" Grid.Row="1" Grid.Column="0" Content="V" Command="{Binding ButtonAddClick}" CommandParameter="V"/>
+			<Button Name="addD" Grid.Row="1" Grid.Column="1" Content="D" Command="{Binding ButtonAddClick}" CommandParameter="D"/>
+			<Button Name="addSU" Grid.Row="1" Grid.Column="2" Content="-" Command="{Binding SubClick}"/>
+			<Button Name="addX" Grid.Row="2" Grid.Column="0" Content="X" Command="{Binding ButtonAddClick}" CommandParameter="X"/>
+			<Button Name="addM" Grid.Row="2" Grid.Column="1" Content="M" Command="{Binding ButtonAddClick}" CommandParameter="M"/>
+			<Button Name="addMU" Grid.Row="2" Grid.Column="2" Content="*" Command="{Binding MulClick}"/>
+			<Button Name="addL" Grid.Row="3" Grid.Column="0" Content="L" Command="{Binding ButtonAddClick}" CommandParameter="L"/>
+			<Button Name="CE" Grid.Row="3" Grid.Column="1" Content="CE" Command="{Binding ButtonCleClick}"/>
+			<Button Name="addDI" Grid.Row="3" Grid.Column="2" Content="/" Command="{Binding DivClick}"/>
+			<Button Name="res" Classes="tab" Grid.RowSpan="4" Grid.Column="3" Content="=" Command="{Binding CalClick}"/>
+		</Grid>
+	</Grid>
+</Window>

@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Graphic.Views.Pages.PolyLineView">
+
+	<Panel>
+		<WrapPanel>
+			<TextBlock Text="Имя:" Width="130" Margin="0,40,0,0"/>
+			<TextBox Name="textBoxName" Width="145" Text="{Binding Name, Mode=TwoWay}" Margin="0,40,0,20"/>
+
+			<TextBlock Text="Точки:" Width="130"/>
+			<TextBox Name="textBoxPoints" Width="145" Text="{Binding Points, Mode=TwoWay}" Margin="0,0,0,20"/>
+
+			<TextBlock Text="Цвет линии:" Width="130"/>
+			<ComboBox Name="comboBoxColor" SelectedIndex="{Binding Select}" Margin="0,0,0,20" Width="145">
+				<ComboBoxItem>
+					<Rectangle Width="144" Height="20" Fill="Black"/>
+				</ComboBoxItem>
+				<ComboBoxItem>
+					<Rectangle Width="144" Height="20" Fill="Green"/>
+				</ComboBoxItem>
+				<ComboBoxItem>
+					<Rectangle Width="144" Height="20" Fill="Yellow"/>
+				</ComboBoxItem>
+				<ComboBoxItem>
+					<Rectangle Width="144" Height="20" Fill="Blue"/>
+				</ComboBoxItem>
+				<ComboBoxItem>
+					<Rectangle Width="144" Height="20" Fill="Red"/>
+				</ComboBoxItem>
+				<ComboBoxItem>
+					<Rectangle Width="144" Height="20" Fill="RosyBrown"/>
+				</ComboBoxItem>
+			</ComboBox>
+
+			<TextBlock Text="Толщина линии:" Width="130"/>
+			<NumericUpDown Name="numericUpDownStroke" Value="{Binding Thic}" Increment="1" Minimum="1" Width="145" Margin="0,0,0,20"/>
+		</WrapPanel>
+		<WrapPanel Grid.Column="0" VerticalAlignment="Bottom">
+			<Button Name="buttonAdd" Command="{Binding Button_add}" Content="Добавить" Width="149" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+			<Button Name="buttonClear" Command="{Binding Button_cancel}" Content="Сброс" Width="149" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+		</WrapPanel>
+	</Panel>
+	
+</UserControl>

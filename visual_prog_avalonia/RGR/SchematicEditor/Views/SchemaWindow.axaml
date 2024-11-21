@@ -1,0 +1,241 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		MinWidth="1282" Width="1400" 
+		MinHeight="650" Height="720"
+        x:Class="SchematicEditor.Views.SchemaWindow"
+		xmlns:vm="using:SchematicEditor.ViewModels"
+		xmlns:locc="clr-namespace:SchematicEditor.Models"
+		xmlns:views="clr-namespace:SchematicEditor.Views.SchemaElements"
+		Icon="/Assets/avalonia-logo.ico"
+        Title="RGR - Schema Window">
+
+	<Design.DataContext>
+		<vm:SchemaWindowViewModel/>
+	</Design.DataContext>
+	
+	<Window.Resources>
+		<vm:ValueConvertColor x:Key="valueConvert"/>
+	</Window.Resources>
+
+	<Grid RowDefinitions="30, 60, *">
+		<Menu Grid.Row="0">
+			<MenuItem Header="Меню">
+				<MenuItem Header="Создать проект"
+						  Click="CreateProject"/>
+				<MenuItem Name="addedSchem"
+						  Header="Создать схему"
+						  Click="AddedSchemINProject"/>
+				<MenuItem Header="Сохранить проект"
+						  Click="OpenSaveMenu"/>
+				<MenuItem Header="Загрузить проект"
+						  Click="OpenLoadMenu"/>
+				<MenuItem Header="Выйти"
+						  Click="ExitClick"/>
+			</MenuItem>
+		</Menu>
+		<Border Grid.Row="1" BorderThickness="1"
+				BorderBrush="Black">
+			<WrapPanel>
+				<Button Background="White"
+						Height="40" Width="120"
+						Margin="25,10,25,10"
+						Click="ClickElementButton"
+						BorderBrush="Black"
+						Name="buttonIN">
+					<TextBlock Text="Вход"
+							   TextAlignment="Center"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"/>
+				</Button>
+				<Button Background="White"
+						Height="40" Width="120"
+						Margin="10,10,25,10"
+						Click="ClickElementButton"
+						BorderBrush="Black"
+						Name="buttonOUT">
+					<TextBlock Text="Выход"
+							   TextAlignment="Center"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"/>
+				</Button>
+				<Button Background="White"
+						Height="40" Width="120"
+						Margin="10,10,25,10"
+						Click="ClickElementButton"
+						BorderBrush="Black"
+						Name="buttonAND">
+					<TextBlock Text="Элемент И"
+							   TextAlignment="Center"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"/>
+				</Button>
+				<Button Background="White"
+						Height="40" Width="120"
+						Margin="10,10,25,10"
+						Click="ClickElementButton"
+						BorderBrush="Black"
+						Name="buttonOR">
+					<TextBlock Text="Элемент ИЛИ"
+							   TextAlignment="Center"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"/>
+				</Button>
+				<Button Background="White"
+						Height="40" Width="120"
+						Margin="10,10,25,10"
+						Click="ClickElementButton"
+						BorderBrush="Black"
+						Name="buttonNO">
+					<TextBlock Text="Элемент НЕ"
+							   TextAlignment="Center"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"/>
+				</Button>
+				<Button Background="White"
+						Height="40" Width="200"
+						Margin="10,10,25,10"
+						Click="ClickElementButton"
+						BorderBrush="Black"
+						Name="buttonXOR">
+					<TextBlock Text="Элемент ИСКЛ-ИЛИ"
+							   TextAlignment="Center"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"/>
+				</Button>
+				<Button Background="White"
+						Height="40" Width="220"
+						Margin="10,10,25,10"
+						Click="ClickElementButton"
+						BorderBrush="Black"
+						Name="buttonDE">
+					<TextBlock Text="Элемент Демультиплексор"
+							   TextAlignment="Center"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"/>
+				</Button>
+			</WrapPanel>
+		</Border>
+		<Grid Grid.Row="2" ColumnDefinitions="*,150">
+			<ItemsControl Grid.Column="0"
+				      Items="{Binding CurentColectionElement}"
+					  Background="White"
+					  PointerPressed="ClickOnSchema"
+				      DoubleTapped="DoubleClickElementSchema">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<Canvas Name="editCanvas"/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.DataTemplates>
+					<DataTemplate DataType="{x:Type locc:ElementIN}">
+						<views:SchemaElementIN TextIN="{Binding Status}">
+							<views:SchemaElementIN.RenderTransform>
+								<TranslateTransform X="{Binding StartPoint.X}"
+													Y="{Binding StartPoint.Y}"/>
+							</views:SchemaElementIN.RenderTransform>
+						</views:SchemaElementIN>
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type locc:ElementOUT}">
+						<views:SchemaElementOUT TextOUT="{Binding Status}">
+							<views:SchemaElementOUT.RenderTransform>
+								<TranslateTransform X="{Binding StartPoint.X}"
+													Y="{Binding StartPoint.Y}"/>
+							</views:SchemaElementOUT.RenderTransform>
+						</views:SchemaElementOUT>
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type locc:ElementAND}">
+						<views:SchemaElementAND>
+							<views:SchemaElementAND.RenderTransform>
+								<TranslateTransform X="{Binding StartPoint.X}"
+													Y="{Binding StartPoint.Y}"/>
+							</views:SchemaElementAND.RenderTransform>
+						</views:SchemaElementAND>
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type locc:ElementOR}">
+						<views:SchemaElementOR>
+							<views:SchemaElementOR.RenderTransform>
+								<TranslateTransform X="{Binding StartPoint.X}"
+													Y="{Binding StartPoint.Y}"/>
+							</views:SchemaElementOR.RenderTransform>
+						</views:SchemaElementOR>
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type locc:ElementNO}">
+						<views:SchemaElementNO>
+							<views:SchemaElementNO.RenderTransform>
+								<TranslateTransform X="{Binding StartPoint.X}"
+													Y="{Binding StartPoint.Y}"/>
+							</views:SchemaElementNO.RenderTransform>
+						</views:SchemaElementNO>
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type locc:ElementXOR}">
+						<views:SchemaElementXOR>
+							<views:SchemaElementXOR.RenderTransform>
+								<TranslateTransform X="{Binding StartPoint.X}"
+													Y="{Binding StartPoint.Y}"/>
+							</views:SchemaElementXOR.RenderTransform>
+						</views:SchemaElementXOR>
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type locc:ElementDE}">
+						<views:SchemaElementDE>
+							<views:SchemaElementDE.RenderTransform>
+								<TranslateTransform X="{Binding StartPoint.X}"
+													Y="{Binding StartPoint.Y}"/>
+							</views:SchemaElementDE.RenderTransform>
+						</views:SchemaElementDE>
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type locc:SchemaLine}">
+						<Line StartPoint="{Binding StartPoint}"
+							  EndPoint="{Binding EndPoint}"
+							  Stroke="{Binding Status, Converter={StaticResource valueConvert}}"
+							  StrokeThickness="3"/>
+					</DataTemplate>
+				</ItemsControl.DataTemplates>
+			</ItemsControl>
+			<Border Grid.Column="1"
+					BorderBrush="Black"
+					BorderThickness="1">
+				<Grid RowDefinitions="46, 20, *" Margin="0">
+					<Border BorderBrush="Black"
+							BorderThickness="1"
+							Grid.Row="0"
+							Margin="0,0,0,10">
+						<StackPanel Grid.Row="0">
+							<TextBlock Text="Открыто:"
+									   VerticalAlignment="Center"
+										HorizontalAlignment="Center"/>
+							<TextBlock Text="{Binding CurentNameSchema, Mode=OneWay}"
+									   VerticalAlignment="Center"
+									   HorizontalAlignment="Center"/>
+						</StackPanel>
+					</Border>
+					<TextBlock Text="{Binding CurentNameProject, Mode=OneWay}"
+							   Grid.Row="1"
+							   VerticalAlignment="Center"
+							   HorizontalAlignment="Center"
+							   DoubleTapped="DoubleClickChangeNames"/>
+					<ListBox Items="{Binding CurentSchemaList}"
+							 Grid.Row="2"
+							 DoubleTapped="DoubleClickEditSchema">
+						<ListBox.ItemTemplate>
+							<DataTemplate DataType="{x:Type locc:Schema}">
+								<Grid ColumnDefinitions="*, 20">
+									<TextBlock Grid.Column="0"
+											   Text="{Binding Name, Mode=OneWay}"/>
+									<Button Click="DeleteSchemaButton"
+											Grid.Column="1"
+											Width="20" Height="20">
+										<Image Source="/Assets/deleteImage.png"
+											   Width="18" Height="18"/>
+									</Button>
+								</Grid>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</Grid>		
+			</Border>
+		</Grid>
+	</Grid>
+</Window>

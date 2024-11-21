@@ -1,0 +1,19 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:SchematicEditor"
+             x:Class="SchematicEditor.App">
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <FluentTheme Mode="Light"/>
+		<StyleInclude Source="/Views/SchemaElements/SchemaElementIN.axaml"/>
+		<StyleInclude Source="/Views/SchemaElements/SchemaElementOUT.axaml"/>
+		<StyleInclude Source="/Views/SchemaElements/SchemaElementAND.axaml"/>
+		<StyleInclude Source="/Views/SchemaElements/SchemaElementOR.axaml"/>
+		<StyleInclude Source="/Views/SchemaElements/SchemaElementNO.axaml"/>
+		<StyleInclude Source="/Views/SchemaElements/SchemaElementXOR.axaml"/>
+		<StyleInclude Source="/Views/SchemaElements/SchemaElementDE.axaml"/>
+    </Application.Styles>
+</Application>

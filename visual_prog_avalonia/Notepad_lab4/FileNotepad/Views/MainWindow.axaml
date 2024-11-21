@@ -1,0 +1,46 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FileNotepad.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:locc="clr-namespace:FileNotepad.Models"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="600"
+		MaxWidth="600" MinWidth="600"
+		MaxHeight="600" MinHeight="600"
+        x:Class="FileNotepad.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="FileNotepad">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<Window.Resources>
+		<vm:ImageConvertor x:Key="imageConvert"/>
+	</Window.Resources>
+
+	<Panel>
+		<Grid Name="grid_a" RowDefinitions="*,30,30" IsVisible="{Binding Visible_notepad}">
+			<TextBox Name="contentTextBox" Grid.Row="0" Text="{Binding Text, Mode=TwoWay}" TextWrapping="Wrap" AcceptsReturn="True" Watermark="Введите текст"/>
+			<Button Name="openButton" Grid.Row="1" Content="Открыть" Command="{Binding ButtonOpenNotepad}" Width="600" HorizontalContentAlignment="Center"/>
+			<Button Name="saveButton" Grid.Row="2" Content="Сохранить" Command="{Binding ButtonSaveNotepad}" Width="600" HorizontalContentAlignment="Center"/>
+		</Grid>
+		<Grid Name="grid_b" RowDefinitions="*,30,30" IsVisible="{Binding Visible_grid}">
+			<ListBox Name="fileListBox" Grid.Row="0" Items="{Binding Files_colection}" SelectedIndex="{Binding Selected}" DoubleTapped="DoubleTap">
+				<ListBox.ItemTemplate>
+					<DataTemplate DataType="{x:Type locc:FilesAndDir}">
+						<Grid ColumnDefinitions="0.2,*">
+							<Image Grid.Column="0" Source="{Binding Image, Converter={StaticResource imageConvert}}" Height="20" Width="20" Margin="0,0,20,0"/>
+							<TextBlock Grid.Column="1" HorizontalAlignment="Stretch" Text="{Binding Name}"/>
+						</Grid>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+			<TextBox Name="fileTextBox" Text="{Binding DopText1, Mode=TwoWay}" Grid.Row="1"/>
+			<WrapPanel Grid.Row="2">
+				<Button Name="okButton" Content="{Binding ButtonText, Mode=OneWay}" IsVisible="{Binding Visible_grid}" Command="{Binding ButtonClick}" Width="300" HorizontalContentAlignment="Center"/>
+				<Button Name="cancelButton" Content="Отмена" Command="{Binding ButtonCancel}" Width="300" HorizontalContentAlignment="Center"/>
+			</WrapPanel>
+		</Grid>
+	</Panel>
+</Window>

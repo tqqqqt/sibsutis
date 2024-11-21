@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCityEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CityEvent>
+    <Header>Космодрайв</Header>
+    <Description>Выставка космоса для всей семьи Космодрайв</Description>
+    <Image>Assets/Event_image/kids.jpg</Image>
+    <Date>16-04-23</Date>
+    <Category>Для детей</Category>
+    <Price>649</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Сказка про Умку</Header>
+    <Description>Театр</Description>
+    <Image>Assets/Event_image/kids.jpg</Image>
+    <Date>08-04-23</Date>
+    <Category>Для детей, культура</Category>
+    <Price>400</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Театр живых кукол &lt;&lt;2+Ку&gt;&gt;. Музей славянской мифологии</Header>
+    <Description>Экскурсия</Description>
+    <Image>Assets/Event_image/kids.jpg</Image>
+    <Date>23-03-23</Date>
+    <Category>Для детей, экскурсии</Category>
+    <Price>560</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Бластерспейс</Header>
+    <Description>Театр</Description>
+    <Image>Assets/Event_image/kids.jpg</Image>
+    <Date>15-04-23</Date>
+    <Category>Для детей, культура</Category>
+    <Price>400</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Аленький цветочек</Header>
+    <Description>Театр</Description>
+    <Image>Assets/Event_image/kids.jpg</Image>
+    <Date>19-03-23</Date>
+    <Category>Для детей, культура</Category>
+    <Price>400</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Бурлеск</Header>
+    <Description>Театр</Description>
+    <Image>Assets/Event_image/kids.jpg</Image>
+    <Date>04-03-23</Date>
+    <Category>Для детей, шоу</Category>
+    <Price>400</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Рыцарские страсти</Header>
+    <Description>Театр</Description>
+    <Image>Assets/Event_image/kids.jpg</Image>
+    <Date>04-03-23</Date>
+    <Category>Для детей, культура</Category>
+    <Price>400</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>СИБ КИЗ ФЕСТ Prod</Header>
+    <Description>Фестиваль</Description>
+    <Image>Assets/Event_image/sport.jpg</Image>
+    <Date>29-04-23</Date>
+    <Category>Спорт, шоу</Category>
+    <Price>200</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>МИЛОНГА Tango open air</Header>
+    <Description>Танцы</Description>
+    <Image>Assets/Event_image/sport.jpg</Image>
+    <Date>07-06-23</Date>
+    <Category>Спорт, шоу, вечеринка</Category>
+    <Price>200</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Терапевтическая группа &lt;Послание себе&gt;</Header>
+    <Description>Практики</Description>
+    <Image>Assets/Event_image/sport.jpg</Image>
+    <Date>13-05-23</Date>
+    <Category>Стиль жизни, спорт</Category>
+    <Price>1000</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Гонка героев</Header>
+    <Description>Забег</Description>
+    <Image>Assets/Event_image/sport.jpg</Image>
+    <Date>09-09-23</Date>
+    <Category>Спорт, стиль жизни</Category>
+    <Price>50</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Обзорная экскурсия на автомобиле</Header>
+    <Description>Экскурсии</Description>
+    <Image>Assets/Event_image/excursion.jpg</Image>
+    <Date>02-03-23</Date>
+    <Category>Экскурсии</Category>
+    <Price>9500</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Знакомство со стрит-артом</Header>
+    <Description>Экскурсии</Description>
+    <Image>Assets/Event_image/excursion.jpg</Image>
+    <Date>02-03-23</Date>
+    <Category>Экскурсии, культура</Category>
+    <Price>4000</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Новосибирск вечерний</Header>
+    <Description>Экскурсии</Description>
+    <Image>Assets/Event_image/excursion.jpg</Image>
+    <Date>02-03-23</Date>
+    <Category>Экскурсии</Category>
+    <Price>5400</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Винный ужин по мотивам бестселлера</Header>
+    <Description>Винный ужин по мотивам бестселлера &lt;Ешь. Молись. Люби&gt;</Description>
+    <Image>Assets/Event_image/party.jpg</Image>
+    <Date>07-03-23</Date>
+    <Category>Вечеринки, стиль жизни</Category>
+    <Price>600</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Диско 90-х</Header>
+    <Description>Вечеринка</Description>
+    <Image>Assets/Event_image/party.jpg</Image>
+    <Date>11-03-23</Date>
+    <Category>Вечеринки, стиль жизни, шоу</Category>
+    <Price>200</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Родительская академия</Header>
+    <Description>В цикле научно-образовательных мероприятий, посвященных году педагога и наставника Сибирский институт управления РАНХиГС запускает проект &lt;Родительская академия&gt;</Description>
+    <Image>Assets/Event_image/education.jpg</Image>
+    <Date>15-04-23</Date>
+    <Category>Образование, онлайн</Category>
+    <Price>400</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Профессиональное обучение в сетевой форме</Header>
+    <Description>Профессиональное обучение по программам подготовки, переподготовки, повышения квалификации всех категорий граждан</Description>
+    <Image>Assets/Event_image/education.jpg</Image>
+    <Date>30-04-23</Date>
+    <Category>Образование, онлайн</Category>
+    <Price>1000</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Солнечная Русь</Header>
+    <Description>Древний свадебный обряд. Мера - священное полотно. Солнечные праздники. Светлица</Description>
+    <Image>Assets/Event_image/excursion.jpg</Image>
+    <Date>18-02-23</Date>
+    <Category>Экскурсии, образование</Category>
+    <Price>4400</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Серия мастер-классов для творческих людей</Header>
+    <Description>&lt;Базовые световые решения в фотосъемке&gt;</Description>
+    <Image>Assets/Event_image/education.jpg</Image>
+    <Date>27-03-23</Date>
+    <Category>Образование, онлайн</Category>
+    <Price>6400</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Конкурсные дни Московского детского фестиваля национальных культур &lt;Мой дом - Москва&gt;</Header>
+    <Description>К участию в фестивале приглашаются обучающиеся образовательных организаций города Москвы в возрасте от 7 до 21 года и члены их семей в составе детских творческих</Description>
+    <Image>Assets/Event_image/excursion.jpg</Image>
+    <Date>14-02-23</Date>
+    <Category>Для детей, онлайн</Category>
+    <Price>400</Price>
+  </CityEvent>
+  <CityEvent>
+    <Header>Дискотека 90-х</Header>
+    <Description>Вечеринка</Description>
+    <Image>Assets/Event_image/party.jpg</Image>
+    <Date>23-03-23</Date>
+    <Category>Вечеринки</Category>
+    <Price>400</Price>
+  </CityEvent>
+</ArrayOfCityEvent>

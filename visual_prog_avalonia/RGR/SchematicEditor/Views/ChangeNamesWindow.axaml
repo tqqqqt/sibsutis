@@ -1,0 +1,49 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:locc="clr-namespace:SchematicEditor.Models"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		MinWidth="500" MaxWidth="500" Width="500"
+		Height="600"
+        x:Class="SchematicEditor.Views.ChangeNamesWindow"
+        Title="RGR - Change Names">
+
+	<Grid RowDefinitions="40, * , 40">
+		<TextBox Text="{Binding ProjectName, Mode=TwoWay}"
+				 FontSize="14"
+				 Grid.Row="0"
+				 Width="470"
+				 Margin="10,10,10,10"/>
+		<ScrollViewer Grid.Row="1">
+			<ItemsControl Items="{Binding SchemaColection}"
+						  Background="WhiteSmoke"
+						  Grid.Row="1"
+						  ScrollViewer.VerticalScrollBarVisibility="Visible">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel Name="itemsControlPanel"/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.DataTemplates>
+					<DataTemplate DataType="{x:Type locc:Schema}">
+						<TextBox Text="{Binding Name, Mode=TwoWay}"
+								 Width="470"
+								 Height="40"
+								 Margin="10,10,10,10"/>
+					</DataTemplate>
+				</ItemsControl.DataTemplates>
+			</ItemsControl>
+		</ScrollViewer>
+		<Button Name="exit"
+				Content="Сохранить и выйти"
+				Height="40"
+				Grid.Row="2"
+				Width="500"
+				BorderBrush="Black"
+				Background="White"
+				Click="ButtonSaveClick"
+				VerticalContentAlignment="Center"
+				HorizontalContentAlignment="Center"/>
+	</Grid>
+</Window>

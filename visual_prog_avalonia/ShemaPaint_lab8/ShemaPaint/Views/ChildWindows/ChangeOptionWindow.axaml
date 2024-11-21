@@ -1,0 +1,166 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:locc="clr-namespace:ShemaPaint.Models"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ShemaPaint.Views.ChildWindows.ChangeOption"
+        Title="ChangeOption">
+
+	<TabControl SelectedIndex="0">
+		<TabItem>
+			<TabItem.Header>
+				<TextBlock Text="Общие параметры"/>
+			</TabItem.Header>
+			<StackPanel>
+				<TextBox Watermark="Имя" Text="{Binding Name, Mode=TwoWay}" AcceptsReturn="True"/>
+				<ComboBox Width="300" SelectedIndex="{Binding StereotInd, Mode=TwoWay}" Margin="0,5,0,5">
+					<ComboBoxItem>Стереотипы</ComboBoxItem>
+					<ComboBoxItem>Static</ComboBoxItem>
+					<ComboBoxItem>Abstract</ComboBoxItem>
+				</ComboBox>
+				<ComboBox Width="300" SelectedIndex="{Binding VidimInd, Mode=TwoWay}" Margin="0,0,0,5">
+					<ComboBoxItem>Спецификатор видимости</ComboBoxItem>
+					<ComboBoxItem>Public</ComboBoxItem>
+					<ComboBoxItem>Private</ComboBoxItem>
+				</ComboBox>
+				<WrapPanel VerticalAlignment="Bottom">
+					<Button Content="Сохранить" VerticalAlignment="Bottom"
+							HorizontalContentAlignment="Center"
+							Command="{Binding ButtonAdd1}"/>
+					<Button Content="Очистить" VerticalAlignment="Bottom"
+							HorizontalContentAlignment="Center"
+							Command="{Binding ButtonClear1}"/>
+				</WrapPanel>
+			</StackPanel>
+		</TabItem>
+		<TabItem>
+			<TabItem.Header>
+				<TextBlock Text="Атрибуты"/>
+			</TabItem.Header>
+			<StackPanel>
+				<ListBox Background="Silver" Height="200"
+						 Items="{Binding AtribColection}"
+						 SelectedIndex="{Binding SelectIndex2}">
+					<ListBox.ItemTemplate>
+						<DataTemplate DataType="{x:Type locc:Atrib}">
+							<StackPanel>
+								<TextBlock FontSize="12">
+									<TextBlock.Text>
+										<MultiBinding StringFormat="{}{0} &lt;&lt;{1}&gt;&gt; {2}: {3} = {4}">
+											<Binding Path="Vidim"/>
+											<Binding Path="Stereot"/>
+											<Binding Path="Name"/>
+											<Binding Path="Type"/>
+											<Binding Path="AtribValue"/>
+										</MultiBinding>
+									</TextBlock.Text>
+								</TextBlock>
+							</StackPanel>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+				<Separator Height="2" BorderBrush="Black"
+						   BorderThickness="1"/>
+				<StackPanel>
+					<WrapPanel Margin="0,5,0,0">
+						<ComboBox Width="300" SelectedIndex="{Binding VidInd2, Mode=TwoWay}" Margin="0,0,5,0">
+							<ComboBoxItem>Видимость</ComboBoxItem>
+							<ComboBoxItem>Public</ComboBoxItem>
+							<ComboBoxItem>Private</ComboBoxItem>
+							<ComboBoxItem>Protected</ComboBoxItem>
+							<ComboBoxItem>Readonly</ComboBoxItem>
+							<ComboBoxItem>Static</ComboBoxItem>
+						</ComboBox>
+						<ComboBox Width="300" SelectedIndex="{Binding SterInd2, Mode=TwoWay}">
+							<ComboBoxItem>Стереотип</ComboBoxItem>
+							<ComboBoxItem>Event</ComboBoxItem>
+							<ComboBoxItem>Property</ComboBoxItem>
+							<ComboBoxItem>Required</ComboBoxItem>
+						</ComboBox>
+					</WrapPanel>
+					<TextBox Text="{Binding AtName}" Watermark="Name" HorizontalAlignment="Left"
+							 Margin="0,5,0,5" Width="605"/>
+					<WrapPanel>
+						<TextBox Watermark="Type" Text="{Binding AtType, Mode=TwoWay}"
+								 Margin="0,0,5,0" Width="300"/>
+						<TextBox Watermark="Value" Text="{Binding AtValue, Mode=TwoWay}" Width="300"/>
+					</WrapPanel>
+					<WrapPanel Margin="0,5,0,5">
+						<Button Content="Добавить" Command="{Binding ButtonAdd2}" Width="201"/>
+						<Button Content="Очистить" Command="{Binding ButtonClear2}" Width="201"/>
+						<Button Content="Удалить" Command="{Binding ButtonDelete2}" Width="201"/>
+					</WrapPanel>
+				</StackPanel>
+			</StackPanel>
+		</TabItem>
+		<TabItem>
+			<TabItem.Header>
+				<TextBlock Text="Операции"/>
+			</TabItem.Header>
+			<StackPanel>
+				<ListBox Background="Silver" Height="200"
+						 Items="{Binding OperColection}"
+					 SelectedIndex="{Binding SelectIndex3}">
+					<ListBox.ItemTemplate>
+						<DataTemplate DataType="{x:Type locc:Oper}">
+							<StackPanel>
+								<WrapPanel>
+									<TextBlock FontSize="10">
+										<TextBlock.Text>
+											<MultiBinding StringFormat="{}{0} &lt;&lt;{1}&gt;&gt; {2} ({3} : {4}): {5}">
+												<Binding Path="OpVidim"/>
+												<Binding Path="OpSter"/>
+												<Binding Path="OpName"/>
+												<Binding Path="ParName"/>
+												<Binding Path="ParType"/>
+												<Binding Path="OpType"/>
+											</MultiBinding>
+										</TextBlock.Text>
+									</TextBlock>
+								</WrapPanel>
+							</StackPanel>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+				<Separator Height="2" BorderBrush="Black" BorderThickness="1"/>
+				<StackPanel>
+					<WrapPanel Margin="0,5,0,0">
+						<ComboBox Width="300" SelectedIndex="{Binding VidInd3, Mode=TwoWay}"
+								  Margin="0,0,5,0">
+							<ComboBoxItem>Видимость</ComboBoxItem>
+							<ComboBoxItem>Public</ComboBoxItem>
+							<ComboBoxItem>Private</ComboBoxItem>
+							<ComboBoxItem>Protected</ComboBoxItem>
+							<ComboBoxItem>Readonly</ComboBoxItem>
+							<ComboBoxItem>Static</ComboBoxItem>
+						</ComboBox>
+						<ComboBox Width="300" SelectedIndex="{Binding SterInd3, Mode=TwoWay}">
+							<ComboBoxItem>Стереотип</ComboBoxItem>
+							<ComboBoxItem>Event</ComboBoxItem>
+							<ComboBoxItem>Property</ComboBoxItem>
+							<ComboBoxItem>Required</ComboBoxItem>
+						</ComboBox>
+					</WrapPanel>
+					<WrapPanel>
+						<TextBox Text="{Binding OpName, Mode=TwoWay}" Watermark="Name" HorizontalAlignment="Left"
+							 Margin="0,5,0,5" Width="300"/>
+						<TextBox Text="{Binding OpType, Mode=TwoWay}" Watermark="Type operation" HorizontalAlignment="Left"
+								 Margin="5,5,0,5" Width="300"/>
+					</WrapPanel>
+					<WrapPanel>
+						<TextBox Text="{Binding ParName, Mode=TwoWay}" Watermark="Parametr name" HorizontalAlignment="Left"
+							 Margin="0,0,0,5" Width="300"/>
+						<TextBox Text="{Binding ParType, Mode=TwoWay}" Watermark="Type parametr" HorizontalAlignment="Left"
+								 Margin="5,0,0,5" Width="300"/>
+					</WrapPanel>
+					<WrapPanel Margin="0,0,0,5">
+						<Button Content="Добавить" Command="{Binding ButtonAdd3}" Width="201"/>
+						<Button Content="Очистить" Command="{Binding ButtonClear3}" Width="201"/>
+						<Button Content="Удалить" Command="{Binding ButtonDelete3}" Width="201"/>
+					</WrapPanel>
+				</StackPanel>
+			</StackPanel>
+		</TabItem>
+	</TabControl>
+</Window>

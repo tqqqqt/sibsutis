@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="EventInSity.Views.Pages.OnlineView"
+			 			 xmlns:vm="using:EventInSity.ViewModels"
+			 xmlns:locc="clr-namespace:EventInSity.Models">
+
+	<UserControl.Resources>
+		<vm:ImageConvertor x:Key="imageConvert"/>
+	</UserControl.Resources>
+	
+	<ItemsControl Items="{Binding Online_colections}">
+		<ItemsControl.ItemTemplate>
+			<DataTemplate DataType="{x:Type locc:CityEvent}">
+				<Border Margin="5" BorderBrush="Black" BorderThickness="1">
+					<Grid  ShowGridLines="False" RowDefinitions="0.4,*">
+						<Image Grid.Row="0" Height="120" Width="120" Margin="0,46,0,0" Source="{Binding Image, Converter={StaticResource imageConvert}}"/>
+						<StackPanel Grid.Row="1">
+							<TextBlock TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" FontSize="14" Margin="0,42,0,0" Text="{Binding Header}"/>
+							<TextBlock TextAlignment="Center" FontWeight="Bold" Margin="1" Text="{Binding Date}"/>
+							<TextBlock Margin="1" TextWrapping="Wrap" Text="{Binding Description}"/>
+							<TextBlock TextAlignment="Center" FontWeight="Bold" Margin="1" Text="{Binding Price, StringFormat='{}{0} рублей'}"/>
+						</StackPanel>
+					</Grid>
+				</Border>
+			</DataTemplate>
+		</ItemsControl.ItemTemplate>
+		<ItemsControl.ItemsPanel>
+			<ItemsPanelTemplate>
+				<WrapPanel ScrollViewer.VerticalScrollBarVisibility="Visible" ItemHeight="290" ItemWidth="250"/>
+			</ItemsPanelTemplate>
+		</ItemsControl.ItemsPanel>
+	</ItemsControl>
+</UserControl>

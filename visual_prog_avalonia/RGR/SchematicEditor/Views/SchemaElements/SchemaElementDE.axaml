@@ -1,0 +1,78 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SchematicEditor.Views.SchemaElements">
+  <Design.PreviewWith>
+    <controls:SchemaElementDE />
+  </Design.PreviewWith>
+
+  <Style Selector="controls|SchemaElementDE">
+    <!-- Set Defaults -->
+    <Setter Property="Template">
+      <ControlTemplate>
+		  <Canvas Name="SchemaElementDE"
+				  Height="45"
+				  Width="40"
+				  Background="Transparent">
+			  <Path Data="m 0,0 l 20,-10 l 0,40 l -20,-10 Z"
+					Stroke="Black"
+					StrokeThickness="1"
+					Fill="White"
+					Canvas.Top="11"
+					Canvas.Left="10"/>
+			  <TextBlock Text="DMX"
+						 FontSize="8"
+						 Canvas.Top="22"
+						 Canvas.Left="11"/>
+			  <Ellipse Name="IN1"
+					   Width="10"
+					   Height="10"
+					   Fill="White"
+					   Stroke="Black"
+					   StrokeThickness="1"
+					   ZIndex="2">
+				  <Ellipse.RenderTransform>
+					  <TranslateTransform X="0"
+										  Y="16"/>
+				  </Ellipse.RenderTransform>
+			  </Ellipse>
+			  <Ellipse Name="IN2"
+					   Width="10"
+					   Height="10"
+					   Fill="White"
+					   Stroke="Black"
+					   StrokeThickness="1"
+					   ZIndex="2">
+				  <Ellipse.RenderTransform>
+					  <TranslateTransform X="10"
+										  Y="34"/>
+				  </Ellipse.RenderTransform>
+			  </Ellipse>
+			  <Ellipse Name="OUT1"
+					   Width="10"
+					   Height="10"
+					   Fill="White"
+					   Stroke="Black"
+					   StrokeThickness="1"
+					   ZIndex="2">
+				  <Ellipse.RenderTransform>
+					  <TranslateTransform X="30"
+										  Y="9"/>
+				  </Ellipse.RenderTransform>
+			  </Ellipse>
+			  <Ellipse Name="OUT2"
+					   Width="10"
+					   Height="10"
+					   Fill="White"
+					   Stroke="Black"
+					   StrokeThickness="1"
+					   ZIndex="2">
+				  <Ellipse.RenderTransform>
+					  <TranslateTransform X="30"
+										  Y="25"/>
+				  </Ellipse.RenderTransform>
+			  </Ellipse>
+		  </Canvas>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

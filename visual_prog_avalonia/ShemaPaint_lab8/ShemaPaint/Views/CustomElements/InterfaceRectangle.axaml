@@ -1,0 +1,145 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:locc="clr-namespace:ShemaPaint.Models"
+		xmlns:vm="clr-namespace:ShemaPaint.ViewModels"
+        xmlns:controls="using:ShemaPaint.Views.CustomElements">
+  <Design.PreviewWith>
+    <controls:InterfaceRectangle />
+  </Design.PreviewWith>
+
+	<Styles.Resources>
+		<vm:TenPosConvertor x:Key="TenPosConvert"/>
+		<vm:HalfPosConvertor x:Key="HalfPosConvert"/>
+		<vm:TwoTenPosConvertor x:Key="TwoTenPosConvert"/>
+	</Styles.Resources>
+
+	<Style Selector="controls|InterfaceRectangle">
+		<!-- Set Defaults -->
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Canvas Name="InterfaceRectangle"
+						Height="{TemplateBinding Height}"
+						  Width="{TemplateBinding Width}"
+						Background="Transparent">
+					<Border BorderBrush="Black" BorderThickness="1"
+							Background="Silver"
+						ClipToBounds="True"
+							Width="{Binding $parent[Canvas].Width, Converter={StaticResource TwoTenPosConvert}}"
+							Height="{Binding $parent[Canvas].Height, Converter={StaticResource TwoTenPosConvert}}">
+						<Border.RenderTransform>
+							<TranslateTransform X="10" Y="10"/>
+						</Border.RenderTransform>
+						<StackPanel>
+							<TextBlock Text="&lt;&lt;interface&gt;&gt;"
+									   Foreground="Gray"
+									   FontSize="8"
+									   HorizontalAlignment="Center"/>
+							<TextBlock Text="{TemplateBinding NameClass}"
+									   HorizontalAlignment="Center"
+									   TextWrapping="Wrap" Margin="0,0,0,2"
+									   FontSize="{TemplateBinding FontSizeMain}"/>
+							<Separator Height="2" BorderBrush="Black"
+									   BorderThickness="1"/>
+							<ItemsControl Items="{TemplateBinding PeremClass}">
+								<ItemsControl.DataTemplates>
+									<DataTemplate DataType="{x:Type locc:Atrib}">
+										<WrapPanel>
+											<TextBlock FontSize="10" TextWrapping="Wrap">
+												<TextBlock.Text>
+													<MultiBinding StringFormat="{}{0} &lt;&lt;{1}&gt;&gt; {2}: {3} = {4}">
+														<Binding Path="Vidim"/>
+														<Binding Path="Stereot"/>
+														<Binding Path="Name"/>
+														<Binding Path="Type"/>
+														<Binding Path="AtribValue"/>
+													</MultiBinding>
+												</TextBlock.Text>
+											</TextBlock>
+										</WrapPanel>
+									</DataTemplate>
+								</ItemsControl.DataTemplates>
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<StackPanel/>
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+							</ItemsControl>
+							<Separator Height="2" BorderBrush="Black" BorderThickness="1"
+									   Margin="0,2,0,0"/>
+							<ItemsControl Items="{TemplateBinding OperClass}">
+								<ItemsControl.DataTemplates>
+									<DataTemplate DataType="{x:Type locc:Oper}">
+										<WrapPanel>
+											<TextBlock FontSize="10" TextWrapping="Wrap">
+												<TextBlock.Text>
+													<MultiBinding StringFormat="{}{0} &lt;&lt;{1}&gt;&gt; {2} ({3} : {4}): {5}">
+														<Binding Path="OpVidim"/>
+														<Binding Path="OpSter"/>
+														<Binding Path="OpName"/>
+														<Binding Path="ParName"/>
+														<Binding Path="ParType"/>
+														<Binding Path="OpType"/>
+													</MultiBinding>
+												</TextBlock.Text>
+											</TextBlock>
+										</WrapPanel>
+									</DataTemplate>
+								</ItemsControl.DataTemplates>
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<StackPanel/>
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+							</ItemsControl>
+						</StackPanel>
+					</Border>
+					<Rectangle ZIndex="2"
+							   Width="{Binding $parent[Canvas].Width, Converter={StaticResource TwoTenPosConvert}}"
+							   Height="{Binding $parent[Canvas].Height, Converter={StaticResource TwoTenPosConvert}}"
+							   Fill="Transparent">
+						<Rectangle.RenderTransform>
+							<TranslateTransform X="10"
+												Y="10"/>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Ellipse Width="10" Height="10"
+							 Stroke="Black" Fill="White"
+							 StrokeThickness="2"
+							 ZIndex="4">
+						<Ellipse.RenderTransform>
+							<TranslateTransform X="{Binding $parent[Canvas].Width, Converter={StaticResource HalfPosConvert}}"
+												Y="0"/>
+						</Ellipse.RenderTransform>
+					</Ellipse>
+					<Ellipse Width="10" Height="10"
+							 Stroke="Black" Fill="White"
+							 StrokeThickness="2"
+							 ZIndex="4">
+						<Ellipse.RenderTransform>
+							<TranslateTransform X="0"
+												Y="{Binding $parent[Canvas].Height, Converter={StaticResource HalfPosConvert}}"/>
+						</Ellipse.RenderTransform>
+					</Ellipse>
+					<Ellipse Width="10" Height="10"
+							 Stroke="Black" Fill="White"
+							 StrokeThickness="2"
+							 ZIndex="4">
+						<Ellipse.RenderTransform>
+							<TranslateTransform X="{Binding $parent[Canvas].Width, Converter={StaticResource HalfPosConvert}}"
+												Y="{Binding $parent[Canvas].Height, Converter={StaticResource TenPosConvert}}"/>
+						</Ellipse.RenderTransform>
+					</Ellipse>
+					<Ellipse Width="10" Height="10"
+							 Stroke="Black" Fill="White"
+							 StrokeThickness="2"
+							 ZIndex="4">
+						<Ellipse.RenderTransform>
+							<TranslateTransform X="{Binding $parent[Canvas].Width, Converter={StaticResource TenPosConvert}}"
+												Y="{Binding $parent[Canvas].Height, Converter={StaticResource HalfPosConvert}}"/>
+						</Ellipse.RenderTransform>
+					</Ellipse>
+				</Canvas>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+</Styles>

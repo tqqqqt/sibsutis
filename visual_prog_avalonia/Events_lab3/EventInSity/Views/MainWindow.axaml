@@ -1,0 +1,114 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:EventInSity.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
+		Width="1025" Height="700"
+		MinHeight="700" MaxHeight="1000" MinWidth="1025" MaxWidth="1300"
+        x:Class="EventInSity.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Events in city">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<TabControl SelectedIndex="0">
+		<TabControl.Styles>
+			<Style Selector="TextBlock">
+				<Setter Property="FontSize" Value="11"/>
+				<Setter Property="Margin" Value="12"/>
+			</Style>
+			<Style Selector="Image">
+				<Setter Property="Width" Value="20"/>
+				<Setter Property="Height" Value="20"/>
+			</Style>
+			<Style Selector="TabItem">
+				<Setter Property="Width" Value="111"/>
+				<Setter Property="Margin" Value="0,0,0,0"/>
+			</Style>
+		</TabControl.Styles>
+		<TabItem>
+			<TabItem.Header>
+				<Grid ColumnDefinitions="0.2,*">
+					<Image Grid.Column="0" Source="../Assets/Category_image/kids.png"/>
+					<TextBlock Grid.Column="1" Text="Для детей"/>
+				</Grid>
+			</TabItem.Header>
+			<ContentControl	Content="{Binding Kids_content}"/>
+		</TabItem>
+		<TabItem>
+			<TabItem.Header>
+				<Grid ColumnDefinitions="0.2,*">
+					<Image Grid.Column="0" Source="../Assets/Category_image/sport.png"/>
+					<TextBlock Grid.Column="1" Text="Спорт"/>
+				</Grid>
+			</TabItem.Header>
+			<ContentControl	Content="{Binding Sport_content}"/>
+		</TabItem>
+		<TabItem>
+			<TabItem.Header>
+				<Grid ColumnDefinitions="0.2,*">
+					<Image Grid.Column="0" Source="../Assets/Category_image/culture.png"/>
+					<TextBlock Grid.Column="1" Text="Культура"/>
+				</Grid>
+			</TabItem.Header>
+			<ContentControl	Content="{Binding Culture_content}"/>
+		</TabItem>
+		<TabItem>
+			<TabItem.Header>
+				<Grid ColumnDefinitions="0.2,*">
+					<Image Grid.Column="0" Source="../Assets/Category_image/excursions.png"/>
+					<TextBlock Grid.Column="1" Text="Экскурсии"/>
+				</Grid>
+			</TabItem.Header>
+			<ContentControl	Content="{Binding Excursions_content}"/>
+		</TabItem>
+		<TabItem>
+			<TabItem.Header>
+				<Grid ColumnDefinitions="0.2,*">
+					<Image Grid.Column="0" Source="../Assets/Category_image/lifestyle.png"/>
+					<TextBlock Grid.Column="1" Text="Образ жизни"/>
+				</Grid>
+			</TabItem.Header>
+			<ContentControl	Content="{Binding Lifestyle_content}"/>
+		</TabItem>
+		<TabItem>
+			<TabItem.Header>
+				<Grid ColumnDefinitions="0.2,*">
+					<Image Grid.Column="0" Source="../Assets/Category_image/party.png"/>
+					<TextBlock Grid.Column="1" Text="Вечеринки"/>
+				</Grid>
+			</TabItem.Header>
+			<ContentControl	Content="{Binding Party_Content}"/>
+		</TabItem>
+		<TabItem>
+			<TabItem.Header>
+				<Grid ColumnDefinitions="0.2,*">
+					<Image Grid.Column="0" Source="../Assets/Category_image/education.png"/>
+					<TextBlock Grid.Column="1" Text="Образование"/>
+				</Grid>
+			</TabItem.Header>
+			<ContentControl	Content="{Binding Education_content}"/>
+		</TabItem>
+		<TabItem>
+			<TabItem.Header>
+				<Grid ColumnDefinitions="0.2,*">
+					<Image Grid.Column="0" Source="../Assets/Category_image/online.png"/>
+					<TextBlock Grid.Column="1" Text="Онлайн"/>
+				</Grid>
+			</TabItem.Header>
+			<ContentControl	Content="{Binding Online_content}"/>
+		</TabItem>
+		<TabItem>
+			<TabItem.Header>
+				<Grid ColumnDefinitions="0.2,*">
+					<Image Grid.Column="0" Source="../Assets/Category_image/show.png"/>
+					<TextBlock Grid.Column="1" Text="Шоу"/>
+				</Grid>
+			</TabItem.Header>
+			<ContentControl	Content="{Binding Show_content}"/>
+		</TabItem>
+	</TabControl>
+</Window>
