@@ -1,0 +1,17 @@
+sal-продовцы, cust-покупатели, ord-заказы
+
+zad 1 - select 'sal',sname,'have number',snum from sal;
+zad 3 - select cname,sname,sal.city from sal,cust where sal.city=cust.city and sal.city!="London";
+zad 5 - select b.cnum, b.cname from cust a, cust b where a.snum=1002 and b.city=a.city;
+zad 6 - elect * from ord where cnum = (select cnum from cust where cname="Grass");
+zad 7 - select * from ord where cnum in (select cnum from cust where cname="Grass");
+zad 8 - select rating,count(*) from cust group by rating having rating>(
+select avg(rating) from cust where city="San Jose");
+
+1 - select t_1.onum, t_1.amt*0.85,'euro',t_2.cname,t_2.rating from ord t_1, cust t_2 where t_1.cnum=t_2.cnum and t_2.city not in ("San Jose","Berlin");
+2 - select t_1.amt, t_2.sname, t_3.cname from ord t_1, sal t_2, cust t_3 where t_1.odate not in ("2022-08-03","2022-08-05") and t_1.cnum=t_3.cnum and t_1.snum=t_2.snum order by t_1.amt desc;
+3 - select cname, (select count(*) from ord t_2 where t_1.cnum=t_2.cnum) 'count'  from cust t_1 where t_1.city in ("London","Barselona") order by cname;
+4 - select t_1.onum, t_1.amt, t_2.sname, t_3.cname from ord t_1, sal t_2, cust t_3 where t_1.snum=t_2.snum and t_1.cnum=t_3.cnum and substr(t_2.city,1,1) between 'B' and 'N' and substr(t_3.city,1,1) between 'B' and 'N';
+5 - select t_1.onum, t_2.onum from ord t_1, ord t_2 where t_1.snum=t_2.snum and t_1.onum<t_2.onum;
+6 - select cname from cust where snum in (select snum from sal where comm>0.12);
+7 - select snum,sum(amt) sum from ord group by snum having sum>(select max(amt) from ord);

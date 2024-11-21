@@ -1,0 +1,11 @@
+sal-продовцы, cust-покупатели, ord-заказы
+
+zad 1 - select * from cust where cname like '%s'
+
+1 - select * from cust where substr(city,1,1) betweem 'C' and 'R';
+2 - select * from cust where city like '%e%';
+3 - select count(*),sum(amt) from ord where snum=1002;
+4 - select count(distinct odate) from ord where amt<1000;
+5 - select snum,min(amt) from ord group by snum;
+6 - select min(cname) from cust where cname like 'C%';
+7 - select max(onum),odate from ord group by odate;

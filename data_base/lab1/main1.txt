@@ -1,0 +1,11 @@
+sal-продовцы, cust-покупатели, ord-заказы
+
+1 - select * from cust where rating=300;
+2 - select amt, odate, cnum from ord;
+3 - select rating, cname from cust where rating>=200;
+4 - select distinct odate from ord;
+5 - select sname, city from sal where not (city="London" and comm>0.10);
+select sname, city from sal where city!="London" or comm<=0.10;
+6 - select * from cust where rating>100 and city="Rome";
+7.1 - select * from ord where snum in (1001, 1003);
+7.2 - select * from ord where snum=1001 or snum=1003;

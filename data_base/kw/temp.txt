@@ -1,0 +1,4 @@
+sudo systemctl start mariadb
+sudo php --server localhost:8080 -t ./
+
+mysql -u root -p

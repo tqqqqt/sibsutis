@@ -1,0 +1,12 @@
+sal-продовцы, cust-покупатели, ord-заказы
+
+1-select t1.snum, t1.sname, t2.cnum, t2.cname from sal t1 left join cust t2 on t1.snum=t2.snum;
+2-select t1.onum, t1.amt, t2.cname, t2.city from ord t1 join cust t2 on t1.cnum=t2.cnum and t2.rating>=200;
+2-select t1.onum, t1.amt, t2.cname, t2.city from ord t1 join cust t2 on t1.cnum=t2.cnum where t2.rating>=200;
+3-select t1.sname, min(t2.amt) from sal t1 left join ord t2 on t1.comm<0.15 and t1.snum=t2.snum
+group by t1.snum;
+4-select t1.snum, t2.cnum from sal t1 cross join cust t2 on t1.snum%2=0 and t2.cnum%2=0;
+5-select substr(cname,1,1) from cust union select substr(city,1,1) from cust;
+5-select substr(cname,1,1) from cust union all select substr(city,1,1) from cust;
+6-create view p6 as select * from ord natural join cust; //view name - p6
+7-select t1.cname, sum(t2.amt) from cust t1, ord t2 where t1.city in (select city from sal group by city having count(*)=1) and t1.cnum=t2.cnum group by t1.cnum;

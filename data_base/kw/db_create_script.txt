@@ -1,0 +1,39 @@
+//database
+create database kw;
+
+//table master
+create table if not exists master (mnum int(10) NOT NULL, name varchar(255) NOT NULL, age int(4) NOT NULL, birth date NOT NULL, phone varchar(10) NOT NULL, PRIMARY KEY(mnum));
+
+insert into master(mnum, name, age, birth, phone) values (1001,'Edvard',31,'1993-10-20','111234567');
+insert into master(mnum, name, age, birth, phone) values (1002,'Bil',28,'1996-08-15','987654321');
+insert into master(mnum, name, age, birth, phone) values (1003,'Lee',28,'1996-05-30','115674599');
+insert into master(mnum, name, age, birth, phone) values (1004,'Mark',40,'1984-01-02','999888666');
+
+
+//table salon
+create table if not exists salon (snum int(10) NOT NULL, address varchar(255) NOT NULL, size int(10) NOT NULL, PRIMARY KEY(snum));
+
+insert into salon(snum, address,size) values (2001,'Moscow',34);
+insert into salon(snum, address,size) values (2002,'Novosibirsk',56);
+insert into salon(snum, address,size) values (2003,'Kazahstan',11);
+insert into salon(snum, address,size) values (2004,'China',120);
+
+//table client
+create table if not exists client (cnum int(10) NOT NULL, name varchar(255) NOT NULL, gender varchar(1) NOT NULL, birth date NOT NULL, phone varchar(10) NOT NULL, car_num varchar(10) NOT NULL, PRIMARY KEY(cnum));
+
+insert into client(cnum, name, gender, birth, phone, car_num) values (3001,'Stepan','m','1998-02-02','192837465','S10DE');
+insert into client(cnum, name, gender, birth, phone, car_num) values (3002,'Andrey','m','1996-08-21','918273645','T25KE');
+insert into client(cnum, name, gender, birth, phone, car_num) values (3003,'Kate','f','2000-10-19','987651234','F16DB');
+insert into client(cnum, name, gender, birth, phone, car_num) values (3004,'Tony','m','1996-09-09','982176435','H66HE');
+
+//table ord
+create table if not exists ord (onum int(10) NOT NULL, mnum int(10) NOT NULL, snum int(10) NOT NULL, odate date NOT NULL, cnum int(10) NOT NULL, PRIMARY KEY(onum), FOREIGN KEY (mnum) REFERENCES master(mnum), FOREIGN KEY (snum) REFERENCES salon(snum), FOREIGN KEY (cnum) REFERENCES client(cnum));
+
+insert into ord(onum, mnum, snum, odate, cnum) values (4001,1001,2001,'2024-09-16',3001);
+insert into ord(onum, mnum, snum, odate, cnum) values (4002,1002,2001,'2024-08-13',3003);
+insert into ord(onum, mnum, snum, odate, cnum) values (4003,1003,2001,'2023-01-01',3002);
+insert into ord(onum, mnum, snum, odate, cnum) values (4004,1004,2002,'2023-08-12',3004);
+insert into ord(onum, mnum, snum, odate, cnum) values (4005,1002,2004,'2022-11-11',3002);
+insert into ord(onum, mnum, snum, odate, cnum) values (4006,1001,2003,'2024-02-15',3001);
+insert into ord(onum, mnum, snum, odate, cnum) values (4007,1004,2003,'2024-09-11',3003);
+insert into ord(onum, mnum, snum, odate, cnum) values (4008,1003,2002,'2024-09-01',3004);
