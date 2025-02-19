@@ -1,0 +1,15 @@
+declare 
+    CURSOR cur1 is select sname, comm from sal where city != 'London'; 
+    s_name VARCHAR2(40); 
+    s_comm NUMBER; 
+begin 
+    OPEN cur1; 
+    LOOP 
+        FETCH cur1 into s_name, s_comm; 
+        DBMS_OUTPUT.PUT_LINE('Name = '||s_name||', comm = '||s_comm); 
+        if cur1%ROWCOUNT=2 then 
+            exit; 
+        end if; 
+    end loop; 
+    CLOSE cur1; 
+end;

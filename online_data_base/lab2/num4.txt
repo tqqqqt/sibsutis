@@ -1,0 +1,13 @@
+create sequence my_seq;
+/
+create table temp (com VARCHAR(10), num INT);
+/
+insert into temp values('NEXTVAL',my_seq.NEXTVAL);
+insert into temp values('CURRVAL',my_seq.CURRVAL);
+insert into temp values('NEXTVAL',my_seq.NEXTVAL);
+/
+select * from temp;
+/
+drop table temp;
+/
+drop sequence my_seq;

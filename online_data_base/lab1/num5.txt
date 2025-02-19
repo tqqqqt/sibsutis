@@ -1,0 +1,16 @@
+declare 
+    invalid_rating exception; 
+    min_rating number; 
+begin 
+    select min(rating) into min_rating from cust; 
+    if min_rating < 200 then 
+        raise invalid_rating; 
+    else 
+        DBMS_OUTPUT.PUT_LINE('Min rating is '||min_rating); 
+    end if; 
+exception 
+    when invalid_rating then 
+        DBMS_OUTPUT.PUT_LINE('Min rating < 200, curent min value is '||min_rating); 
+    when others then 
+        DBMS_OUTPUT.PUT_LINE('Catch other exceptions'); 
+end;

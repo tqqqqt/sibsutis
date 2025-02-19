@@ -1,0 +1,10 @@
+declare
+    field_name VARCHAR2(20);
+    temp VARCHAR2(20);
+begin
+    field_name:='no_number';
+    select field_name into temp from ord;
+exception
+    when others then
+        DBMS_OUTPUT.PUT_LINE('No field "'||field_name||'" in ord');
+end;

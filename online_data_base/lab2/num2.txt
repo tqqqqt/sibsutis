@@ -1,0 +1,8 @@
+declare 
+    cursor cur(p_date DATE) is 
+    select onum, amt, odate from ord where odate>p_date; 
+begin 
+    for elem in cur(TO_DATE('01.04.2010')) loop 
+        DBMS_OUTPUT.PUT_LINE('Заказ '||elem.onum||' сумма '||elem.amt||' дата '||elem.odate); 
+    end loop; 
+end;

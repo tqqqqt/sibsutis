@@ -1,0 +1,6 @@
+declare
+    max_date date;
+begin
+    select max(Odate) into max_date from ord;
+    DBMS_OUTPUT.PUT_LINE('Max date is '||max_date);
+end;

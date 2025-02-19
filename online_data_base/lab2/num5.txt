@@ -1,0 +1,16 @@
+create table temp(t_id INT PRIMARY KEY, t_name VARCHAR(60), t_amt NUMBER(7,2));
+create sequence my_seq increment by 2 start with 5000;
+/
+declare
+    cursor cur is 
+    select t2.sname, min(t1.amt) as val from ord t1, sal t2 where t1.snum=t2.snum group by t2.sname;
+begin
+    for elem in cur loop
+        insert into temp values(my_seq.NEXTVAL,elem.sname,elem.val);
+    end loop;
+end;
+/
+select * from temp;
+/
+drop table temp;
+drop sequence my_seq;

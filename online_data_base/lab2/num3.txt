@@ -1,0 +1,13 @@
+select
+    count(decode(to_char(odate,'dd.mm.yyyy'),'03.01.2010',onum,null)) "3-e",
+    count(decode(to_char(odate,'dd.mm.yyyy'),'04.01.2010',onum,null)) "4-e",
+    count(decode(to_char(odate,'dd.mm.yyyy'),'10.01.2010',onum,null)) "10-e"
+from ord;
+/
+select
+    snum,
+    sum(decode(to_char(odate,'dd.mm.yyyy'),'03.01.2010',amt,null)) "3-e",
+    sum(decode(to_char(odate,'dd.mm.yyyy'),'04.01.2010',amt,null)) "4-e",
+    sum(decode(to_char(odate,'dd.mm.yyyy'),'05.01.2010',amt,null)) "5-e",
+    sum(decode(to_char(odate,'dd.mm.yyyy'),'06.01.2010',amt,null)) "6-e"
+from ord group by snum;
