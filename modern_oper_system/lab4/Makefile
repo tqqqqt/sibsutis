@@ -6,14 +6,14 @@ num1-1: main1_11.cpp /root/labs/plates.o
 num1-2: main1_22.cpp /root/labs/plates.o
 	g++ main1_22.cpp /root/labs/plates.o -l vg -o num1-2
 
-num2: main2-2.cpp /root/labs/plates.o
-	g++ main2-2.cpp /root/labs/plates.o -l vg -o num2
+num2: main2-3.cpp /root/labs/plates.o
+	g++ main2-3.cpp /root/labs/plates.o -l vg -o num2
 
-num3: main3-2.cpp /root/labs/plates.o
-	g++ main3-2.cpp /root/labs/plates.o -l vg -o num3
+num3: main3-3.cpp /root/labs/plates.o
+	g++ main3-3.cpp /root/labs/plates.o -l vg -o num3
 
-num4: main4-2.cpp /root/labs/plates.o
-	g++ main4-2.cpp /root/labs/plates.o -l vg -o num4
+num4: main4-3.cpp /root/labs/plates.o
+	g++ main4-3.cpp /root/labs/plates.o -l vg -o num4
 
 .PHONY: clear
 clear:
