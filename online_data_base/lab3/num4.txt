@@ -1,0 +1,63 @@
+create table brig(name_1 VARCHAR(100), name_2 VARCHAR(100));
+insert into brig values('Heks','Meggs');
+/
+
+create or replace package lib_pack is
+    function min_name(f_name VARCHAR2, s_name VARCHAR2) return VARCHAR2;
+    function max_name(f_name VARCHAR2, s_name VARCHAR2) return VARCHAR2;
+end lib_pack;
+/
+
+create or replace package pack_1 is
+    function add_get_min(ff_name VARCHAR2, ss_name VARCHAR2) return VARCHAR2;
+    function add_get_max(ff_name VARCHAR2, ss_name VARCHAR2) return VARCHAR2;
+end pack_1;
+/
+
+create or replace package body lib_pack is
+    function min_name(f_name VARCHAR2, s_name VARCHAR2) return VARCHAR2 is
+    begin
+        insert into brig values(f_name,s_name);
+        if length(f_name)>=length(s_name) then
+            return(s_name);
+        else
+            return(f_name);
+        end if;
+    end min_name;
+
+    function max_name(f_name VARCHAR2, s_name VARCHAR2) return VARCHAR2 is
+    begin
+        insert into brig values(f_name,s_name);
+        if length(f_name)>=length(s_name) then
+            return(f_name);
+        else
+            return(s_name);
+        end if;
+    end max_name;
+end lib_pack;
+/
+
+create or replace package body pack_1 is
+    function add_get_min(ff_name VARCHAR2, ss_name VARCHAR2) return VARCHAR2 is
+    begin
+        return(lib_pack.min_name(ff_name,ss_name));
+    end add_get_min;
+
+    function add_get_max(ff_name VARCHAR2, ss_name VARCHAR2) return VARCHAR2 is
+    begin
+        return(lib_pack.max_name(ff_name,ss_name));
+    end add_get_max;
+end pack_1;
+/
+
+declare
+    str_result VARCHAR2(100);
+begin
+    str_result:=pack_1.add_get_min('Hel','Samuset');
+    DBMS_OUTPUT.put_line('N1 = '||str_result);
+    str_result:=pack_1.add_get_max('San','Proton');
+    DBMS_OUTPUT.put_line('N2 = '||str_result);
+end;
+/
+
+drop table brig;

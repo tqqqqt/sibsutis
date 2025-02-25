@@ -1,0 +1,33 @@
+create or replace package pack_1 is
+    procedure sal_cnt(citt VARCHAR2);
+    procedure cust_cnt(citt VARCHAR2);
+end pack_1;
+/
+
+create or replace package body pack_1 is
+    cnt NUMBER;
+    
+    procedure sal_cnt(citt VARCHAR2) is
+    cursor cur(cit VARCHAR2) is select count(*) from sal where city=cit;
+    begin
+        open cur(citt);
+        fetch cur into cnt;
+        DBMS_OUTPUT.put_line('Sal count = '||cnt);
+        close cur;
+    end sal_cnt;
+
+    procedure cust_cnt(citt VARCHAR2) is
+    cursor cur(cit VARCHAR2) is select count(*) from cust where city=cit;
+    begin
+        open cur(citt);
+        fetch cur into cnt;
+        DBMS_OUTPUT.put_line('Cust count = '||cnt);
+        close cur;
+    end cust_cnt;
+end pack_1;
+/
+
+begin
+    pack_1.sal_cnt('London');
+    pack_1.cust_cnt('London');
+end;

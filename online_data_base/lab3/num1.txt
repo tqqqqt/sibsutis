@@ -1,0 +1,18 @@
+create table dep(o_num INT, o_name VARCHAR(60));
+insert into dep values(100,'Offis-1');
+insert into dep values(101,'Offis-2');
+insert into dep values(102,'Offis-3');
+insert into dep values(103,'Offis-4');
+/
+create or replace procedure change_num(need_num INT, new_num INT) as
+    begin
+        update dep set o_num=new_num where o_num=need_num;
+    end;
+/
+begin
+    change_num(100,200);
+end;
+/
+select * from DEP;
+/
+drop table dep;

@@ -1,0 +1,13 @@
+create table temp(num INT);
+/
+select * from user_tab_privs;
+/
+grant select on temp to PUBLIC;
+/
+select * from user_tab_privs;
+/
+revoke select on temp from public;
+/
+select * from user_tab_privs;
+/
+drop table temp;

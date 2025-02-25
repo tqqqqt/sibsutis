@@ -1,0 +1,9 @@
+select * from SESSION_PRIVS;
+/
+create table temp(num INT);
+/
+create role friend;
+grant select, update on temp to friend;
+/
+drop role friend;
+drop table temp;

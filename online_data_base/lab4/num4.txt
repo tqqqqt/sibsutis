@@ -1,0 +1,26 @@
+create table sal_2 as select * from sal;
+/
+create table cust_2 as select * from cust;
+/
+create table ord_2 as select * from ord;
+/
+
+delete from sal_2 where 1=1;
+delete from cust_2 where 1=1;
+ROLLBACK;
+
+truncate table ord_2;
+ROLLBACK;
+
+/
+select * from sal_2;
+/
+select * from cust_2;
+/
+select * from ord_2;
+/
+drop table sal_2;
+drop table cust_2;
+drop table ord_2;
+
+-- truncate ddl comanda, tam srazy posle vipolnenia idet commit

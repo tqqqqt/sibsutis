@@ -1,0 +1,21 @@
+create table temp(num INT, s_name VARCHAR2(100));
+/
+create table history(command VARCHAR2(50), table_name VARCHAR2(50), user_name VARCHAR2(100), c_time VARCHAR2(100));
+/
+create trigger dummy
+after insert on temp
+for each row
+when (length(new.s_name)>0)
+begin
+    insert into history values('insert','temp',user,to_char(sysdate,'DD-MM-YYYY HH:MM:SS'));
+end;
+/
+begin
+    insert into temp values(1,'Has');
+    insert into temp values(2,'Temp');
+end;
+/
+select * from history;
+/
+drop table temp;
+drop table history;

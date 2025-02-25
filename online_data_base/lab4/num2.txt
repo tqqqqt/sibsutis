@@ -1,0 +1,28 @@
+create table temp(num INT, s_name VARCHAR2(100));
+/
+create table history(command VARCHAR2(50), table_name VARCHAR2(50), user_name VARCHAR2(100), c_time VARCHAR2(100));
+/
+create trigger dummy
+after insert or delete or update on temp
+for each row
+begin
+    if INSERTING then 
+        insert into history values('insert','temp',user,to_char(sysdate,'DD-MM-YYYY HH:MM:SS'));
+    elsif DELETING then
+        insert into history values('delete','temp',user,to_char(sysdate,'DD-MM-YYYY HH:MM:SS'));
+    elsif UPDATING then
+        insert into history values('update','temp',user,to_char(sysdate,'DD-MM-YYYY HH:MM:SS'));
+    end if;
+end;
+/
+begin
+    insert into temp values(1,'Has');
+    insert into temp values(2,'Temp');
+    delete from temp where s_name='Has';
+    update temp set num=1 where s_name='Temp';
+end;
+/
+select * from history;
+/
+drop table temp;
+drop table history;

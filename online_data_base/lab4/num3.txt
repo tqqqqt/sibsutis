@@ -1,0 +1,12 @@
+create or replace trigger trig
+before insert or update on sal
+for each row
+begin
+    if :new.city='Rome' then
+        raise_application_error(-666666,'Bad city');
+    end if;
+end;
+/
+begin
+    insert into sal values(10,'ss','Rome',0.10);
+end;
