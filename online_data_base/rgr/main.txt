@@ -1,0 +1,168 @@
+create table Agens(a_id INT PRIMARY KEY, a_name VARCHAR2(100) NOT NULL, a_work_count INT);
+/
+
+create table Kurort(k_id INT PRIMARY KEY, k_name VARCHAR2(100) NOT NULL, rating INT, a_id INT NOT NULL);
+alter table Kurort add constraint a_id FOREIGN KEY (a_id) references Agens(a_id);
+/
+
+create or replace package table_pack is
+    procedure insert_info;
+    procedure delete_info;
+end table_pack;
+/
+
+create or replace package table_lib is
+    type table_arr is table of VARCHAR2(200);
+    owner_tables BOOLEAN :=false;
+    check_owner_complete BOOLEAN :=false;
+
+    procedure check_owner;
+
+    procedure start_work;
+    procedure end_work;
+
+    procedure delete_kurort(kurort_name VARCHAR2);
+    procedure show_agens_kurorts_without(agens_name VARCHAR2);
+end table_lib;
+/
+
+create or replace package body table_pack is 
+    procedure insert_info is
+    begin
+        -- agens tab
+        insert into Agens values(100,'Big agens',100);
+        insert into Agens values(101,'Med agens',50);
+        insert into Agens values(102,'Small agens',20);
+        insert into Agens values(103,'China agens',999);
+        insert into Agens values(104,'Free agens',4);
+        insert into Agens values(105,'Plans',22);
+        insert into Agens values(106,'Fast',30);
+        COMMIT;
+
+        -- kurort tab
+        insert into Kurort values(1,'Tenerife, Spain',100,100);
+        insert into Kurort values(2,'Musha Cay Island, Bahamas',95,101);
+        insert into Kurort values(3,'Isla de Sa Ferradura, Mediterranean Sea',90,102);
+        insert into Kurort values(4,'Split, Croatia',86,100);
+        insert into Kurort values(5,'Punta Cana, Dominican Republic',79,104);
+        insert into Kurort values(6,'Fiji Islands',73,106);
+        insert into Kurort values(7,'Anapa, Russia',64,106);
+        insert into Kurort values(8,'Kaliningrad Region (Baltic Sea), Russia',59,105);
+        insert into Kurort values(9,'Vityazevo, Russia',55,103);
+        insert into Kurort values(10,'Sochi, Russia',50,101);
+        COMMIT;
+    exception
+        when others then
+            ROLLBACK;
+    end insert_info;
+
+    procedure delete_info is
+    begin
+        -- kurort tab
+        delete from Kurort;
+
+        -- agens tab
+        delete from Agens;
+    end delete_info;
+end table_pack;
+/
+
+create or replace trigger trig_dels
+before delete on Kurort
+for each row
+begin
+    if table_lib.check_owner_complete=false then
+        table_lib.check_owner;
+    end if;
+
+    if user!='UP2' and table_lib.owner_tables!=true then
+        raise_application_error(-66666,'Dont have permision to delete data.');
+    end if;
+end;
+/
+
+create or replace view tables_view as
+    select t1.k_name as Kurort, t2.a_name as Agens, t1.rating from Kurort t1, Agens t2 where t1.a_id=t2.a_id;
+
+grant select on tables_view to public;
+grant execute on table_lib to public;
+/
+
+create or replace package body table_lib is
+    procedure check_owner is
+        result_num INT;
+    begin
+        select count(*) into result_num from all_tables where table_name='KURORT';
+        if result_num<=0 then
+            owner_tables:=false;
+        else
+            owner_tables:=true;
+        end if;
+        check_owner_complete:=true;
+    end check_owner; 
+
+    procedure start_work is
+    begin
+        table_pack.insert_info;
+
+        if check_owner_complete=false then
+            table_lib.check_owner;
+        end if;
+    end start_work;
+
+    procedure end_work is
+    begin
+        table_pack.delete_info;
+    end end_work;
+
+    procedure delete_kurort(kurort_name VARCHAR2) is
+    begin
+        delete from Kurort where k_name=kurort_name;
+    exception
+        when others then
+            DBMS_OUTPUT.PUT_LINE('Возникло исключение при удалении курорта.');
+    end delete_kurort;
+
+    procedure show_agens_kurorts_without(agens_name VARCHAR2) is
+        arr table_arr;
+    begin
+        select t1.a_name||' - '||t2.k_name bulk collect into arr from Agens t1, Kurort t2 where t1.a_name<>agens_name and t1.a_id=t2.a_id;
+
+        if arr.COUNT=0 then
+            DBMS_OUTPUT.PUT_LINE('Agens dont have kurort');
+        else
+            for i in 1..arr.COUNT loop
+                DBMS_OUTPUT.PUT_LINE('['||i||'] '||arr(i));
+            end loop;
+        end if;
+    end show_agens_kurorts_without;
+end table_lib;
+/
+
+-- Check all quests
+begin
+    table_lib.start_work;
+end;
+/
+select * from Kurort;
+/
+select * from Agens;
+/
+select * from tables_view;
+/
+begin
+    table_lib.show_agens_kurorts_without('Fast');
+
+    table_lib.delete_kurort('Sochi, Russia');
+end;
+/
+select * from tables_view;
+/
+begin
+    table_lib.end_work;
+end;
+/
+
+drop table Kurort;
+drop table Agens;
+/
